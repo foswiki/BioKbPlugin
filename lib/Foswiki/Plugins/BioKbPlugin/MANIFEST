@@ -1,0 +1,4 @@
+# Release manifest for BioKbPlugin
+data/System/BioKbPlugin.txt 0644 Documentation
+lib/Foswiki/Plugins/BioKbPlugin.pm 0644 Perl module
+
