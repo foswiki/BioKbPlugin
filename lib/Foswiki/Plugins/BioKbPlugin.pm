@@ -11,10 +11,12 @@ use Scalar::Util qw(tainted);
 require Foswiki::Func;       # The plugins API
 require Foswiki::Plugins;    # For the API version
 
-use vars qw( $VERSION $RELEASE $SHORTDESCRIPTION $debug $pluginName $NO_PREFS_IN_TOPIC );
+use vars
+  qw( $VERSION $RELEASE $SHORTDESCRIPTION $debug $pluginName $NO_PREFS_IN_TOPIC );
 $VERSION = '$Rev: 20091103 (2009-11-03) $';
 $RELEASE = '3 Nov 2009';
-$SHORTDESCRIPTION = 'Set of functions to create and populate a biological knowledgebase from online resources, ready for comment, annotation and discussion by a community.';
+$SHORTDESCRIPTION =
+'Set of functions to create and populate a biological knowledgebase from online resources, ready for comment, annotation and discussion by a community.';
 $NO_PREFS_IN_TOPIC = 1;
 $pluginName        = 'BioKbPlugin';
 
@@ -23,7 +25,8 @@ sub initPlugin {
 
     # check for Plugins.pm versions
     if ( $Foswiki::Plugins::VERSION < 1.026 ) {
-        Foswiki::Func::writeWarning("Version mismatch between $pluginName and Plugins.pm");
+        Foswiki::Func::writeWarning(
+            "Version mismatch between $pluginName and Plugins.pm");
         return 0;
     }
 
@@ -36,11 +39,14 @@ sub initPlugin {
     Foswiki::Func::registerTagHandler( 'TOPICTYPES',    \&_TOPICTYPES );
     Foswiki::Func::registerTagHandler( 'SEARCHBYTYPE',  \&_SEARCHBYTYPE );
     Foswiki::Func::registerTagHandler( 'PUBMEDSEARCH',  \&_PUBMEDSEARCH );
-    Foswiki::Func::registerTagHandler( 'PUBMEDSEARCH_FORM', \&_PUBMEDSEARCH_FORM );
+    Foswiki::Func::registerTagHandler( 'PUBMEDSEARCH_FORM',
+        \&_PUBMEDSEARCH_FORM );
 
     Foswiki::Func::registerTagHandler( 'MOLBIOL_FORM', \&_MOLBIOL_FORM );
-    Foswiki::Func::registerTagHandler( 'MOLBIOL_SEARCH_FORM', \&_MOLBIOL_SEARCH_FORM );
-    Foswiki::Func::registerTagHandler( 'FORM_EDIT_TOPIC_DATA', \&_FORM_EDIT_TOPIC_DATA );
+    Foswiki::Func::registerTagHandler( 'MOLBIOL_SEARCH_FORM',
+        \&_MOLBIOL_SEARCH_FORM );
+    Foswiki::Func::registerTagHandler( 'FORM_EDIT_TOPIC_DATA',
+        \&_FORM_EDIT_TOPIC_DATA );
     Foswiki::Func::registerTagHandler( 'FORM_EDIT_URLS', \&_FORM_EDIT_URLS );
 
     require Foswiki::Plugins::BioKbPlugin::BioKb;
@@ -67,22 +73,36 @@ sub _REMOVE_TOPIC {
 
     if ( defined $query->param("delete") ) {
         Foswiki::Plugins::BioKbPlugin::BioKb::remove_topic( $web, $topic );
-        throw Foswiki::OopsException( 'generic',
-            params => [ $query->param("delete") . " deleted and moved to trash", "", "", "" ]
+        throw Foswiki::OopsException(
+            'generic',
+            params => [
+                $query->param("delete") . " deleted and moved to trash",
+                "", "", ""
+            ]
         );
     }
 
     else {
 
         my $wikiname = Foswiki::Func::getWikiName();
-        if ( Foswiki::Func::isAnAdmin($wikiname) == 1 && $topic !~ /(^Browse|Admin|Stats|About|Help|Contact)/ ) {
+        if ( Foswiki::Func::isAnAdmin($wikiname) == 1
+            && $topic !~ /(^Browse|Admin|Stats|About|Help|Contact)/ )
+        {
 
-            my $output = "<span class='delete'>" . CGI::start_form( -method => "GET" ) .
-              CGI::hidden( -name => "delete", -default => $topic ) .
-              CGI::submit( -name => 'edit', -value => $buttontext, -class => "foswikiSubmit" ) .
-              CGI::end_form() . "</span>";
+            my $output =
+                "<span class='delete'>"
+              . CGI::start_form( -method => "GET" )
+              . CGI::hidden( -name => "delete", -default => $topic )
+              . CGI::submit(
+                -name  => 'edit',
+                -value => $buttontext,
+                -class => "foswikiSubmit"
+              )
+              . CGI::end_form()
+              . "</span>";
 
-            $output = Foswiki::Func::expandCommonVariables( $output, $topic, $web );
+            $output =
+              Foswiki::Func::expandCommonVariables( $output, $topic, $web );
 
             return $output;
         }
@@ -105,29 +125,51 @@ sub _SEARCHBYTYPE {
 
     my $output;
     if ( defined $query->param("searchterm") ) {
-        $output = "<h1>Results by type for search term \"" . $query->param("searchterm") . "\"";
-        $output .= " in topic types \"" . ( join ",", $query->param("type") ) . "\"" if ( defined $query->param("type") );
+        $output = "<h1>Results by type for search term \""
+          . $query->param("searchterm") . "\"";
+        $output .=
+          " in topic types \"" . ( join ",", $query->param("type") ) . "\""
+          if ( defined $query->param("type") );
         $output .= ":</h1>%MOST_VIEWED{browse=\"1\"}%";
     }
     else {
 
         my $form = CGI::start_form();
 
-        my %admin_data = %{ Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin($web) };
+        my %admin_data = %{
+            Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin(
+                $web)
+          };
         my @topic_types = keys %admin_data;
-        $form .= "| <span class='inlineheader'>Search term:</span> | " . CGI::textfield( -name => "searchterm", -size => 50, -maxlength => 50 ) . " |\n";
-        $form .= "| <span class='inlineheader'>Restrict to topic type(s):</span> | " . CGI::checkbox_group( -name => 'type', -values => [@topic_types], -default => ["any"] ) . " |\n";
+        $form .= "| <span class='inlineheader'>Search term:</span> | "
+          . CGI::textfield(
+            -name      => "searchterm",
+            -size      => 50,
+            -maxlength => 50
+          ) . " |\n";
+        $form .=
+          "| <span class='inlineheader'>Restrict to topic type(s):</span> | "
+          . CGI::checkbox_group(
+            -name    => 'type',
+            -values  => [@topic_types],
+            -default => ["any"]
+          ) . " |\n";
 
         my @authors = _find_authors($web);
 
         my $popup = CGI::popup_menu(
-            -name => 'author',
+            -name   => 'author',
             -values => [ "any", @authors ],
         );
         $popup =~ s/\n//g;
 
         $form .= "| <span class='inlineheader'>Author:</span> | $popup |\n\n";
-        $form .= "| " . CGI::submit( -name => 'submit', -value => "Submit", -class => "foswikiSubmit" ) . " |\n";
+        $form .= "| "
+          . CGI::submit(
+            -name  => 'submit',
+            -value => "Submit",
+            -class => "foswikiSubmit"
+          ) . " |\n";
         $form .= CGI::end_form();
 
         $output = "<h1>Search topics by type:</h1>" . $form;
@@ -145,8 +187,12 @@ Find a lit of authors in a given web.
 =cut
 
 sub _find_authors {
-    my $web = shift;
-    my $result = Foswiki::Func::searchInWebContent( "author=", $web, [ Foswiki::Func::getTopicList($web) ], { casesensitive => 0, files_without_match => 0 } );
+    my $web    = shift;
+    my $result = Foswiki::Func::searchInWebContent(
+        "author=", $web,
+        [ Foswiki::Func::getTopicList($web) ],
+        { casesensitive => 0, files_without_match => 0 }
+    );
 
     my %authors;
     foreach my $topic ( keys %$result ) {
@@ -168,7 +214,9 @@ sub _MOST_VIEWED {
     my ( $session, $params, $topic, $web ) = @_;
 
     my $query = Foswiki::Func::getCgiQuery();
-    my %admin_data = %{ Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin($web) };
+    my %admin_data =
+      %{ Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin($web)
+      };
     my @alltopics = Foswiki::Func::getTopicList($web);
 
     my $search;
@@ -177,7 +225,13 @@ sub _MOST_VIEWED {
     my @types;
     if ( defined $query->param("type") ) {
         @types = $query->param("type");
-        my $result = Foswiki::Func::searchInWebContent( "TOPIC_TYPE\" type=\"Set\" value=\"(" . ( join "|", @types ) . ")\"", $web, [@alltopics], { type => "regex", casesensitive => 0, files_without_match => 0 } );
+        my $result = Foswiki::Func::searchInWebContent(
+            "TOPIC_TYPE\" type=\"Set\" value=\"("
+              . ( join "|", @types ) . ")\"",
+            $web,
+            [@alltopics],
+            { type => "regex", casesensitive => 0, files_without_match => 0 }
+        );
         @alltopics = keys %$result;
         foreach my $topic ( keys %$result ) {
             push @alltopics, "Data" . $topic;
@@ -189,9 +243,18 @@ sub _MOST_VIEWED {
 
     if ( defined $query->param("searchterm") ) {
         $search = 1;
-        my $result = Foswiki::Func::searchInWebContent( "[^A-Za-z0-9]" . $query->param("searchterm") . "[^A-Za-z0-9]", $web, [@alltopics], { type => "regex", casesensitive => 0, files_without_match => 0 } );
+        my $result = Foswiki::Func::searchInWebContent(
+            "[^A-Za-z0-9]" . $query->param("searchterm") . "[^A-Za-z0-9]",
+            $web,
+            [@alltopics],
+            { type => "regex", casesensitive => 0, files_without_match => 0 }
+        );
         my @topics = keys %$result;
-        return "<span class='error'>No results for \"" . $query->param("searchterm") . "\"</span>" if ( scalar @topics == 0 );
+        return
+            "<span class='error'>No results for \""
+          . $query->param("searchterm")
+          . "\"</span>"
+          if ( scalar @topics == 0 );
         s/^Data// for (@topics);
         %topics = map { $_, 1 } @topics;
     }
@@ -199,7 +262,8 @@ sub _MOST_VIEWED {
     # Examine the statistics for the web and extract the viewing frequencies
 
     my ( $meta, $text ) = Foswiki::Func::readTopic( $web, "WebStatistics" );
-    my ($views) = $text =~ /.*?\-\-statTopContributors\-\-\>[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+(\|[^\|]+\|[^\|]+\|).*/;
+    my ($views) = $text =~
+/.*?\-\-statTopContributors\-\-\>[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+\|[^\|]+(\|[^\|]+\|[^\|]+\|).*/;
     my @matches;
     if ( defined $views ) {
         @matches = $views =~ /(\d+\s+\[\[\w+)/g;
@@ -207,12 +271,18 @@ sub _MOST_VIEWED {
     my %popular;
     foreach my $match (@matches) {
         my ( $viewno, $topic ) = $match =~ /(\d+)\s+\[\[(\w+)/;
-        $popular{$topic} = $viewno if ( !defined $search || defined $topics{$topic} );
+        $popular{$topic} = $viewno
+          if ( !defined $search || defined $topics{$topic} );
     }
 
     # Store topic and type popularity
 
-    my $result = Foswiki::Func::searchInWebContent( "TOPIC_TYPE\" type=\"Set\" value=\"(" . ( join "|", @types ) . ")\"", $web, [ keys %popular ], { type => "regex", casesensitive => 0, files_without_match => 0 } );
+    my $result = Foswiki::Func::searchInWebContent(
+        "TOPIC_TYPE\" type=\"Set\" value=\"(" . ( join "|", @types ) . ")\"",
+        $web,
+        [ keys %popular ],
+        { type => "regex", casesensitive => 0, files_without_match => 0 }
+    );
 
     my %section_popular;
     my %section_count;
@@ -220,7 +290,8 @@ sub _MOST_VIEWED {
     foreach my $topic ( sort { $popular{$b} <=> $popular{$a} } keys %popular ) {
         next if ( $topic =~ "Stats" );
         foreach my $matching_line ( @{ $result->{$topic} } ) {
-            my ($type) = $matching_line =~ /TOPIC_TYPE\" type=\"Set\" value=\"([^\"]+)\"/;
+            my ($type) =
+              $matching_line =~ /TOPIC_TYPE\" type=\"Set\" value=\"([^\"]+)\"/;
             $section_popular{$type}{$topic} = $popular{$topic};
             $section_count{$type} += $popular{$topic};
         }
@@ -236,14 +307,17 @@ sub _MOST_VIEWED {
         @topics = @alltopics;
     }
 
-    $result = Foswiki::Func::searchInWebContent( "TOPIC_TYPE\" type=\"Set\" value=\"", $web, [@topics], { casesensitive => 0, files_without_match => 0 } );
+    $result =
+      Foswiki::Func::searchInWebContent( "TOPIC_TYPE\" type=\"Set\" value=\"",
+        $web, [@topics], { casesensitive => 0, files_without_match => 0 } );
 
     my %count;
 
     foreach my $topic ( sort keys %$result ) {
         next if ( $topic =~ "Stats" );
         foreach my $matching_line ( @{ $result->{$topic} } ) {
-            my ($type) = $matching_line =~ /TOPIC_TYPE\" type=\"Set\" value=\"([^\"]+)\"/;
+            my ($type) =
+              $matching_line =~ /TOPIC_TYPE\" type=\"Set\" value=\"([^\"]+)\"/;
             $count{$type}{$topic} = 1;
         }
     }
@@ -251,10 +325,12 @@ sub _MOST_VIEWED {
     # Write out results
 
     if ( defined $params->{"browse"} ) {
-        return _print_browse( $web, \%section_count, \%section_popular, \%admin_data, \%count );
+        return _print_browse( $web, \%section_count, \%section_popular,
+            \%admin_data, \%count );
     }
     else {
-        return _print_most_viewed( $web, \%section_count, \%section_popular, \%admin_data, \%count );
+        return _print_most_viewed( $web, \%section_count, \%section_popular,
+            \%admin_data, \%count );
 
     }
 }
@@ -276,15 +352,22 @@ sub _print_most_viewed {
 
     $output .= "<h2>Most viewed: </h2><p>";
 
-    my @sections = sort { $section_count{$b} <=> $section_count{$a} } keys %section_count;
+    my @sections =
+      sort { $section_count{$b} <=> $section_count{$a} } keys %section_count;
 
     for ( my $i = 0 ; $i < scalar @sections ; $i++ ) {
         my $section = $sections[$i];
         my $sectionclass;
         ( $sectionclass = $section ) =~ s/\s/_/g;
 
-        $output .= "<span class='inlineheader " . lc $sectionclass . "'>" . $section . "s:</span>&nbsp;&nbsp;&nbsp;&nbsp;";
-        my @topics = sort { $section_popular{$section}{$b} <=> $section_popular{$section}{$a} } keys %{ $section_popular{$section} };
+        $output .=
+            "<span class='inlineheader "
+          . lc $sectionclass . "'>"
+          . $section
+          . "s:</span>&nbsp;&nbsp;&nbsp;&nbsp;";
+        my @topics = sort {
+            $section_popular{$section}{$b} <=> $section_popular{$section}{$a}
+        } keys %{ $section_popular{$section} };
 
         my $print = 0;
         foreach my $topic (@topics) {
@@ -297,7 +380,8 @@ sub _print_most_viewed {
             $output .= "(" . $section_popular{$section}{$topic} . ") ";
             $print++;
         }
-        $output .= "... (of " . ( scalar keys %{ $count{$section} } ) . " total)<p>";
+        $output .=
+          "... (of " . ( scalar keys %{ $count{$section} } ) . " total)<p>";
     }
     return $output;
 }
@@ -319,7 +403,8 @@ sub _print_browse {
     my $output = "";
     $output .= "<div id='browse'>";
 
-    my @sections = sort { $section_count{$b} <=> $section_count{$a} } keys %section_count;
+    my @sections =
+      sort { $section_count{$b} <=> $section_count{$a} } keys %section_count;
     foreach my $section ( keys %count ) {
         push @sections, $section if ( !defined $section_count{$section} );
     }
@@ -331,26 +416,41 @@ sub _print_browse {
         $output .= " rightblock" if ( $i % 2 != 0 );
         $output .= "'>";
 
-        my @topics = sort { $section_popular{$section}{$b} <=> $section_popular{$section}{$a} } keys %{ $section_popular{$section} };
+        my @topics = sort {
+            $section_popular{$section}{$b} <=> $section_popular{$section}{$a}
+        } keys %{ $section_popular{$section} };
         foreach my $topic ( keys %{ $count{$section} } ) {
-            push @topics, $topic if ( !defined $section_popular{$section}{$topic} );
+            push @topics, $topic
+              if ( !defined $section_popular{$section}{$topic} );
         }
 
         my $sectionclass;
         ( $sectionclass = $section ) =~ s/\s/_/g;
 
-        my $descriptor = "<span class='inlineheader " . lc $sectionclass . "'>" . $section . "s: </span>";
+        my $descriptor =
+            "<span class='inlineheader "
+          . lc $sectionclass . "'>"
+          . $section
+          . "s: </span>";
         if ( defined $admin_data{$section}{"descriptor"} ) {
             $descriptor .= "<P>" . $admin_data{$section}{"descriptor"};
         }
         $output .= "<div class='typedescriptor'>" . $descriptor . "</div>";
         if ( defined $admin_data{$section}{"image"} ) {
-            $output .= "<div class='typeimage'><img src=\"" . Foswiki::Func::getPubUrlPath() . "/$web/AdminFormFields/" . $admin_data{$section}{"image"} . "\"></div>";
+            $output .=
+                "<div class='typeimage'><img src=\""
+              . Foswiki::Func::getPubUrlPath()
+              . "/$web/AdminFormFields/"
+              . $admin_data{$section}{"image"}
+              . "\"></div>";
         }
 
         my $sep = "";
         foreach my $topic (@topics) {
-            $output .= $sep . "[[" . $topic . "][" . Foswiki::Func::spaceOutWikiWord($topic) . "]] ";
+            $output .=
+                $sep . "[[" 
+              . $topic . "]["
+              . Foswiki::Func::spaceOutWikiWord($topic) . "]] ";
             $sep = " &bull; ";
         }
         $output .= "<p>";
@@ -376,7 +476,9 @@ sub _REFRESH_LINKS {
 
     my $edited = Foswiki::Func::getSessionValue("edited");
 
-    if ( defined $query->param("refresh") || ( defined $edited && $edited == 1 ) ) {
+    if ( defined $query->param("refresh")
+        || ( defined $edited && $edited == 1 ) )
+    {
         my $target;
         if ( $params->{"all"} eq "" && $query->param("all") eq "" ) {
             $target = $topic;
@@ -384,19 +486,28 @@ sub _REFRESH_LINKS {
         else {
 
         }
-        Foswiki::Plugins::BioKbPlugin::BioKb::_add_links_to_all( $session, $web, undef, $target );
+        Foswiki::Plugins::BioKbPlugin::BioKb::_add_links_to_all( $session, $web,
+            undef, $target );
         Foswiki::Func::clearSessionValue("edited");
     }
 
     if ( defined $params->{"button"} ) {
         if ( defined $params->{"all"} ) {
-            $buttontext = "Refresh links throughout !$web with reference to the dictionary";
+            $buttontext =
+              "Refresh links throughout !$web with reference to the dictionary";
         }
 
-        my $output = "<span class='refresh'>" . CGI::start_form( -method => "GET" ) .
-          CGI::hidden( -name => "refresh", -default => 1 ) .
-          CGI::submit( -name => 'edit', -value => $buttontext, -class => "foswikiSubmit" ) .
-          CGI::end_form() . "</span>";
+        my $output =
+            "<span class='refresh'>"
+          . CGI::start_form( -method => "GET" )
+          . CGI::hidden( -name => "refresh", -default => 1 )
+          . CGI::submit(
+            -name  => 'edit',
+            -value => $buttontext,
+            -class => "foswikiSubmit"
+          )
+          . CGI::end_form()
+          . "</span>";
 
         $output = Foswiki::Func::expandCommonVariables( $output, $topic, $web );
 
@@ -421,14 +532,31 @@ sub _FORM_EDIT_TOPIC_DATA {
     my $output = "";
 
     my $wikiname = Foswiki::Func::getWikiName();
-    if ( Foswiki::Func::checkAccessPermission( "CHANGE", $wikiname, undef, $edit_topic, $web ) == 1 ) {
-        $output = CGI::start_form( -method => "GET", -action => Foswiki::Func::getViewUrl( $web, "CreateForm" ) ) .
-          CGI::hidden( -name => "edit_topic", -default => $edit_topic ) .
-          CGI::hidden( -name => "type",       -default => $type ) .
-          CGI::hidden( -name => "overwrite",  -default => 1 ) .
-          CGI::submit( -name => 'edit', -value => "Edit Structured Data", -class => "foswikiSubmit" ) . "   " .
-          CGI::submit( -name => 'mesh', -value => "Add !MeSH data", -class => "foswikiSubmit" ) .
-          CGI::end_form() . "<br />";
+    if (
+        Foswiki::Func::checkAccessPermission( "CHANGE", $wikiname, undef,
+            $edit_topic, $web ) == 1
+      )
+    {
+        $output = CGI::start_form(
+            -method => "GET",
+            -action => Foswiki::Func::getViewUrl( $web, "CreateForm" )
+          )
+          . CGI::hidden( -name => "edit_topic", -default => $edit_topic )
+          . CGI::hidden( -name => "type",       -default => $type )
+          . CGI::hidden( -name => "overwrite",  -default => 1 )
+          . CGI::submit(
+            -name  => 'edit',
+            -value => "Edit Structured Data",
+            -class => "foswikiSubmit"
+          )
+          . "   "
+          . CGI::submit(
+            -name  => 'mesh',
+            -value => "Add !MeSH data",
+            -class => "foswikiSubmit"
+          )
+          . CGI::end_form()
+          . "<br />";
 
         $output = Foswiki::Func::expandCommonVariables( $output, $topic, $web );
     }
@@ -447,34 +575,59 @@ sub _FORM_EDIT_URLS {
 
     my $query = Foswiki::Func::getCgiQuery();
 
-    my @admin = Foswiki::Plugins::BioKbPlugin::BioKb::read_admin( $web, "DatabaseURLs" );
+    my @admin =
+      Foswiki::Plugins::BioKbPlugin::BioKb::read_admin( $web, "DatabaseURLs" );
     my %prefixes = %{ $admin[0] };
     my %replacements;
 
-    my $form = CGI::start_form() . "| *Database* | *Root URL* | *New value* |\n";
+    my $form =
+      CGI::start_form() . "| *Database* | *Root URL* | *New value* |\n";
     foreach my $db ( sort keys %prefixes ) {
-        $form .= "| $db | " . $prefixes{$db} . " | " . CGI::textfield( -name => $db . "_replacement", -size => 30, -maxlength => 50, -default => "" ) . " |\n";
-        if ( defined $query->param( $db . "_replacement" ) && $query->param( $db . "_replacement" ) =~ /\w/ ) {
+        $form .=
+            "| $db | " 
+          . $prefixes{$db} . " | "
+          . CGI::textfield(
+            -name      => $db . "_replacement",
+            -size      => 30,
+            -maxlength => 50,
+            -default   => ""
+          ) . " |\n";
+        if ( defined $query->param( $db . "_replacement" )
+            && $query->param( $db . "_replacement" ) =~ /\w/ )
+        {
 
             # Check validity of the URL
 
-            if ( $query->param( $db . "_replacement" ) !~ /^((http:\/\/|https:\/\/)?\w+\.\w+(\.\w{2,4})?\.\w{2,4}).+$/ ) {
-                throw Foswiki::OopsException( 'generic',
-                    params => [ "Invalid URL entered. Please try again.\n", "", "", "" ]
+            if ( $query->param( $db . "_replacement" ) !~
+                /^((http:\/\/|https:\/\/)?\w+\.\w+(\.\w{2,4})?\.\w{2,4}).+$/ )
+            {
+                throw Foswiki::OopsException(
+                    'generic',
+                    params => [
+                        "Invalid URL entered. Please try again.\n", "", "", ""
+                    ]
                 );
             }
 
             # Check that a wildcard for the DB entry has been included
 
             if ( $query->param( $db . "_replacement" ) !~ /VAL/ ) {
-                throw Foswiki::OopsException( 'generic',
-                    params => [ "Root URL supplied without a 'VAL' wildcard to indicate where to put the ID. Please try again.\n", "", "", "" ]
+                throw Foswiki::OopsException(
+                    'generic',
+                    params => [
+"Root URL supplied without a 'VAL' wildcard to indicate where to put the ID. Please try again.\n",
+                        "",
+                        "",
+                        ""
+                    ]
                 );
             }
             $replacements{$db} = $query->param( $db . "_replacement" );
         }
     }
-    $form .= "<p>" . CGI::submit( -class => "foswikiSubmit", -value => "Submit" ) . CGI::end_form();
+    $form .= "<p>"
+      . CGI::submit( -class => "foswikiSubmit", -value => "Submit" )
+      . CGI::end_form();
 
     # Search for the string to be replaced in all topics
 
@@ -486,7 +639,8 @@ sub _FORM_EDIT_URLS {
         my %options   = (
             "type"          => "regex",
             "casesensitive" => 0,
-            "files_without_match" => 1 # Quick search- doesn't return line matches
+            "files_without_match" =>
+              1    # Quick search- doesn't return line matches
         );
 
         my $alldone = 0;
@@ -500,11 +654,15 @@ sub _FORM_EDIT_URLS {
             ( $pattern = $prefixes{$db} ) =~ s/(\W)/\\$1/g;
             $pattern =~ s/VAL/\(\\w+\)/g;
 
-            my $result = Foswiki::Func::searchInWebContent( $pattern, $web, \@topiclist, \%options );
+            my $result =
+              Foswiki::Func::searchInWebContent( $pattern, $web, \@topiclist,
+                \%options );
 
             foreach my $topic ( keys %$result, "AdminDatabaseURLs" ) {
                 $changed_topics{$topic} = 1;
-                next if ( ( $topic =~ /^Admin/ && $topic ne "AdminDatabaseURLs" ) || $topic =~ /^Web/ );
+                next
+                  if ( ( $topic =~ /^Admin/ && $topic ne "AdminDatabaseURLs" )
+                    || $topic =~ /^Web/ );
 
                 # Get topic text
 
@@ -527,22 +685,35 @@ sub _FORM_EDIT_URLS {
                 # Save topic
 
                 my $wikiname = Foswiki::Func::getWikiName();
-                if ( Foswiki::Func::checkAccessPermission( "CHANGE", $wikiname, undef, $topic, $web ) != 1 ) {
+                if (
+                    Foswiki::Func::checkAccessPermission( "CHANGE", $wikiname,
+                        undef, $topic, $web ) != 1
+                  )
+                {
                     die "Access dendied for $wikiname\n";
-                    throw Foswiki::OopsException( 'accessdenied',
-                        def   => 'topic_access',
-                        web   => $web,
-                        topic => $topic,
-                        params => [ "CHANGE", $session->security->getReason() ] );
+                    throw Foswiki::OopsException(
+                        'accessdenied',
+                        def    => 'topic_access',
+                        web    => $web,
+                        topic  => $topic,
+                        params => [ "CHANGE", $session->security->getReason() ]
+                    );
                 }
 
                 Foswiki::Func::saveTopic( $web, $topic, $meta, $text );
             }
         }
-        $output = "<h4>Fixed AdminDatabaseURLs and corrected " . ( $alldone - 1 ) . " URLs in " . ( ( scalar keys %changed_topics ) - 1 ) . " topics</h4><br />\n";
+        $output =
+            "<h4>Fixed AdminDatabaseURLs and corrected "
+          . ( $alldone - 1 )
+          . " URLs in "
+          . ( ( scalar keys %changed_topics ) - 1 )
+          . " topics</h4><br />\n";
     }
     else {
-        $output = "Use this page to make changes to the root URLS used to reference external databases. Use 'VAL' as the wildcard to indicate where in the URL to put the appropriate IDs. <b>Warning: making this change will alter every matching URL in the database, as well as new ones.</b><p>" . $form;
+        $output =
+"Use this page to make changes to the root URLS used to reference external databases. Use 'VAL' as the wildcard to indicate where in the URL to put the appropriate IDs. <b>Warning: making this change will alter every matching URL in the database, as well as new ones.</b><p>"
+          . $form;
     }
 
     return $output;
@@ -589,7 +760,9 @@ Produce a list of topics with format specified by a format paramter as per VarSe
 
 sub _TOPICTYPES {
     my ( $session, $params, $topic, $web ) = @_;
-    my %admin_data = %{ Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin($web) };
+    my %admin_data =
+      %{ Foswiki::Plugins::BioKbPlugin::BioKb::read_topic_structure_admin($web)
+      };
 
     my $format = $params->{format};
 
@@ -614,7 +787,9 @@ This is the function embedded in a BioKb web's 'AdminSeed', and right now simply
 sub _MOLBIOL_SEARCH_FORM {
     my ( $session, $params, $topic, $web ) = @_;
 
-    my $form = Foswiki::Plugins::BioKbPlugin::MolecularBiology::kegg_pathway_search( $session, $params, $topic, $web );
+    my $form =
+      Foswiki::Plugins::BioKbPlugin::MolecularBiology::kegg_pathway_search(
+        $session, $params, $topic, $web );
 
     return $form;
 }
@@ -635,7 +810,9 @@ sub _MOLBIOL_FORM {
         $output .= "%PUBMEDSEARCH_FORM%";
     }
     else {
-        $output = Foswiki::Plugins::BioKbPlugin::BioKb::make_input_form( $session, $params, $topic, $web );
+        $output =
+          Foswiki::Plugins::BioKbPlugin::BioKb::make_input_form( $session,
+            $params, $topic, $web );
     }
 
     return $output;
@@ -650,7 +827,9 @@ sub _MOLBIOL_FORM {
 sub _PUBMEDSEARCH_FORM {
     my ( $session, $params, $topic, $web ) = @_;
 
-    my $form = Foswiki::Plugins::BioKbPlugin::Literature::make_search_form( $session, $params, $topic, $web );
+    my $form =
+      Foswiki::Plugins::BioKbPlugin::Literature::make_search_form( $session,
+        $params, $topic, $web );
 
     return $form;
 }
@@ -664,7 +843,9 @@ sub _PUBMEDSEARCH_FORM {
 sub _PUBMEDSEARCH {
     my ( $session, $params, $topic, $web ) = @_;
 
-    my $output = Foswiki::Plugins::BioKbPlugin::Literature::search_pubmed( $session, $params, $topic, $web );
+    my $output =
+      Foswiki::Plugins::BioKbPlugin::Literature::search_pubmed( $session,
+        $params, $topic, $web );
 
     return $output;
 }

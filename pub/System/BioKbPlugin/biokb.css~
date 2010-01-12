@@ -1,0 +1,593 @@
+a img{
+	border:none;
+}
+
+.foswikiTopicText{
+	padding:10px;
+	overflow:auto;
+}
+
+.foswikiAttachments .foswikiTable{
+	font-size:x-small;
+}
+
+.foswikiTopicText h1, .foswikiTopic h1, .foswikiTopicText h2, .foswikiTopic h2, .foswikiTopic h3, .foswikiTopic h4, .datatable h4{
+
+	text-align:left;
+	color: #666666;
+	background-color:transparent;
+}
+
+.foswikiTopic .results h2{
+	clear:both;
+	background-color:transparent;
+}
+
+.foswikiTable, .indent{
+	margin-right:20px;
+	
+}
+
+.foswikiTableEven td{
+	background-color: #EEEEEE;
+}
+
+a.foswikiButton{
+	float:right;
+	margin-right:20px;
+	text-decoration:none;
+	color:black;
+	padding:0 10px;	
+}
+
+.imageSimple{
+	margin-right:20px;
+}
+
+form .foswikiTable{
+	margin:auto;
+}
+form .foswikiTable td{
+	padding:7px 20px;
+}
+
+/********************************************/
+/*           Top left logo                  */
+/********************************************/
+
+div#headerbar{
+	height:5em;
+	padding:10px;
+}
+
+span#logo {
+  float: left;
+  text-align: left;
+  position: relative;
+  display:block;
+}
+
+#logo {
+	float:left;
+}
+
+#logo h1, #logo h1 a, #logo h2{
+	color: #666666;
+}
+#logo h1 a:hover{
+	color:white;
+}
+
+#logo h1 {
+	float: left;
+	letter-spacing: -2px;
+	font-size: 25px;
+	width:500px;
+	margin-bottom:-0.8em;
+}
+
+#logo h2 {
+	font-size:15px;
+	float:left;
+	font-style:italic;
+	text-transform:none;
+	font-weight:normal;
+	text-align:left;
+	border:0;
+	background-image:none;
+}
+
+#logo a {
+	text-decoration: none;
+	/*text-transform: lowercase;*/
+	font-weight: normal;
+
+}
+
+/********************************************/
+/*           Top right menu                 */
+/********************************************/
+
+span#menu {
+  float: right;
+  text-align: right;
+  position:relative;
+  }
+
+
+#menu ul {
+	margin: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu a {
+	position: relative;
+	margin-left: 1.6em;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-bottom: 5px solid #EEEEEE;
+	font-size: xx-small;
+	font-weight: bold;
+	color: #666666;
+}
+
+#menu a:hover, #menu .active a {
+	border-bottom-color: #000000;
+	color: #000000;
+	background-color:transparent;
+}
+
+/********************************************/
+/*       Stretchy rounded-rectangle         */
+/********************************************/
+
+/* set the image to use and establish the lower-right position */ 
+
+.cssbox,.cssbox_body,.cssbox_head,.cssbox_head h2 {
+	background:transparent url(_BioKb_front_background.png) no-repeat bottom right;
+	position:relative;
+}
+.cssbox {
+	width:655px !important;
+	/* intended total box width - padding-right(next) */ width:640px;
+	/* IE Win = width - padding */ padding-right:15px;
+	/* the gap on the right edge of the image (not content padding) */ margin:20px auto;
+	/* use to position the box */
+	position:relative;
+}
+
+
+/* set the top-right image */ .cssbox_head {
+	background-position:top right;
+	margin-right:-15px;
+	
+	/* pull the right image over on top of border */ padding-right:40px;
+	/* right-image-gap+right-inside padding */
+}
+/* set the top-left image */ .cssbox_head h2 {
+	background-position:top left;
+	margin:0;
+	/* reset main site styles*/ border:0;
+	/* ditto */ padding:25px 0 0px 40px;
+	/* padding-left = image gap+interior padding ... no padding-right */ height:auto !important;
+	height:1%;
+	/* IE Holly Hack */
+}
+/* set the lower-left corner image */ .cssbox_body {
+	
+	background-position:bottom left;
+	margin-right:25px;
+	/* interior-padding right */ padding: 1px 0px 0px 40px;
+	/* mirror .cssbox_head right/left */
+}
+
+
+
+div.contentbox{
+	display:block;
+	overflow:auto;
+}
+div.contentbox h1{
+	display:inline;
+}
+
+div.boxleft{
+	width:49.5%;
+	float:left;
+	padding-bottom:10px;
+}
+
+div.boxright{
+	width:49.5%;
+	float:right;
+	padding-bottom:10px;
+}
+
+/*****************************************************/
+/*        Rounded corner rectangles                  */
+/* Work of Greg Johnson http://www.spiffycorners.com */
+/* I adapted colors and simplified selectors         */
+/*****************************************************/
+
+.spiffy{display:block}
+.spiffy *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+
+}
+
+
+.spiffy1{
+  margin-left:3px;
+  margin-right:3px;
+}
+.spiffy1, .spiffy2{
+  padding-left:1px;
+  padding-right:1px;
+}
+.spiffy2, .spiffy3{
+  margin-left:1px;
+  margin-right:1px;
+}
+.spiffy1, .spiffy2, .spiffy3 .spiffy4, .spiffy5{
+  border-left:1px solid;
+  border-right:1px solid}
+
+.spiffyfg{
+	height:300px;
+	overflow:hidden;
+	padding:30px;
+  }
+
+.boxtwo .spiffyfg{
+	height:380px;
+	padding:10px;
+	text-align:center;
+}
+
+.readmore{
+	text-align:right;
+	padding:10px;
+}
+
+/* Colors for first type of rounded box */
+
+div.boxone .spiffyfg, div.boxone .spiffy *, div.boxone .readmore{
+	background:#D2F5F7;
+}
+div.boxone .spiffy1{
+	border-color:#ebfafb;
+	background:#ddf7f9
+}
+div.boxone .spiffy2{
+	border-color:#fafefe;
+  	background:#daf6f8
+}
+div.boxone .spiffy3{
+	border-color:#daf6f8;
+}
+div.boxone .spiffy4{
+	border-color:#ebfafb;
+}
+div.boxone .spiffy5{
+	border-color:#ddf7f9;
+}
+
+div.boxone .spiffyfg{
+	font-size: small;
+}
+
+/* Colors for second type of rounded box */
+
+div.boxtwo .spiffyfg, div.boxtwo .spiffy *, div.boxtwo .readmore{
+	background:#EEDEF0;
+}
+div.boxtwo .spiffy1{
+	border-color:#f7f0f8;
+	background:#f2e6f3
+}
+div.boxtwo .spiffy2{
+	border-color:#fdfbfd;
+  	background:#f1e4f2
+}
+div.boxtwo .spiffy3{
+	border-color:#f1e4f2;
+}
+div.boxtwo .spiffy4{
+	border-color:#f7f0f8;
+}
+div.boxtwo .spiffy5{
+	border-color:#f2e6f3;
+}
+
+/* Colors for third type of rounded box */
+
+div.boxthree .spiffyfg, div.boxthree .spiffy *, div.boxthree .readmore{
+	background:#FCEDC9;
+}
+div.boxthree .spiffy1{
+	border-color:#fdf7e7;
+	background:#fcf1d6
+}
+div.boxthree .spiffy2{
+	border-color:#fefdf9;
+  	background:#fcf0d3
+}
+div.boxthree .spiffy3{
+	border-color:#fcf0d3;
+}
+div.boxthree .spiffy4{
+	border-color:#fdf7e7;
+}
+div.boxthree .spiffy5{
+	border-color:#fcf1d6;
+}
+
+/* Colors for fourth type of rounded box */
+
+div.boxfour .spiffyfg, div.boxfour .spiffy *, div.boxfour .readmore{
+	background:#E4F3DE;
+}
+div.boxfour .spiffy1{
+	border-color:#f3f9f0;
+	background:#eaf6e6
+}
+div.boxfour .spiffy2{
+	border-color:#fcfdfb;
+  	background:#e9f5e4
+}
+div.boxfour .spiffy3{
+	border-color:#e9f5e4;
+}
+div.boxfour .spiffy4{
+	border-color:#f3f9f0;
+}
+div.boxfour .spiffy5{
+	border-color:#eaf6e6;
+}
+
+
+
+
+
+
+
+
+
+.datatable{
+	width:25%;
+	float:right;
+	font-size:0.8em;
+	margin-left:40px;
+}
+.datatable table{
+	font-size:1em;
+}
+.datatable table td{
+	padding:5px;
+}
+
+
+.hiddentext{
+	display:none;
+}
+
+.adddata{
+	font-size:large;
+}
+.vote table{
+	
+}
+
+
+
+
+
+
+
+
+.checked{
+	height:24px;
+	width:48px;
+	display:block;
+	padding-left:16px;
+	background-repeat:no-repeat;
+	background-position:8px center;
+	clear:both;
+	background-image:url(_BioKb_accept2.png);
+	cursor:pointer;
+}
+.unchecked{
+	height:24px;
+	width:48px;
+        display:block;
+        padding-left:16px;
+        background-repeat:no-repeat;
+	background-position:8px center;
+        clear:both;
+        cursor:pointer;	
+	background-image:url(_BioKb_not2.png)
+}
+
+.next{
+	float:right;
+	text-align:right;
+	padding:10px;
+}
+
+.save{
+	float:left;
+	padding:20px;
+}
+.bar{
+	background-color: #DCDCDC;
+	width:90%;
+	margin:auto;
+	padding:10px;
+	overflow:auto;
+
+}
+
+.rightalign{
+	width:100%;
+	border: 5px solid #EEEEEE;
+	text-align:center;
+}
+
+.results{
+	margin:auto;
+	clear:both;
+	padding-bottom:20px;
+}
+.results table{
+	margin:auto;
+	clear:both;
+}
+.results table tbody tr td{
+	font-size:small;
+}
+
+#info{
+	display:none;
+}
+
+#dataheader{
+	clear:both;
+}
+#dataheader h2{
+	font-weight:bold;
+	color: #666666;
+}
+.inlineheader{
+	color: #666666;
+	font-weight: bold;
+	font-size: small;
+}
+.inline{
+	display:inline;
+}
+#browse .typeblock{
+	display:block;
+	margin:20px;
+	clear:both;
+	padding:10px;
+	overflow:auto;
+	border: 5px solid #EEEEEE;
+	height:100px;
+}
+.typeimage{
+	float:left;
+}
+
+div.typeimage img{
+	height:100px;
+	margin:0 10px 0 10px;
+}
+
+.rightblock .typeimage{
+	float:right;
+}
+
+
+.typedescriptor{
+	float:left;
+	height:100px;
+	margin:0 10px 0 10px;
+	width:150px;
+	font-style:italic;
+	border-right: 5px solid #EEEEEE;
+}
+
+.blockcontent{
+	border: 5px solid blue;
+	float:right;
+	width:70%;
+}
+.error{
+	font-weight:bold;
+	color:red;
+	font-size:large;
+}
+#social{
+	float:right;
+}
+
+#date{
+	text-align:right;
+}
+
+
+#stats{
+	width:100%;
+	overflow:auto;
+}
+
+#statsright{
+	float:right;
+	width:48%;
+}
+
+#statsleft{
+	width:48%;
+	clear:none;
+}
+
+img.frontimage{
+	height:100%;
+}
+
+/* Topic type-specific definitions. */
+
+.reference{
+	margin-right:20px;
+	border-width:4px;
+	border-style:solid none none solid;
+	border-color:#C99F1A;
+	padding:1px 10px 1px 10px;
+	margin-bottom:5px;
+}
+
+.animal_model, .protocol{
+	margin-right:20px;
+	border-width:4px;
+	border-style:solid none none solid;
+	border-color:blue;
+	padding:1px 10px 1px 10px;
+	margin-bottom:5px;
+}
+
+
+.gene, .pathway, .compound, .gene_expression{
+	margin-right:20px;
+	border-width:4px;
+	border-style:solid none none solid;
+	border-color: #99CC00;
+	padding:1px 10px 1px 10px;
+	margin-bottom:5px;
+}
+
+.disease, .drug{
+	margin-right:20px;
+	border-width:4px;
+	border-style:solid none none solid;
+	border-color: #cc3333;
+	padding:1px 10px 1px 10px;
+	margin-bottom:5px;
+}
+
+.rightblock{
+	border-style:solid solid none none;
+}
+
+
+
+
+
+
+
