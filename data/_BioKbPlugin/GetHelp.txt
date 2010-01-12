@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="JonathanManning" date="1257180808" format="1.1" reprev="1.2" version="1.2"}%
+<h1>Documentation</h1>
+
+%TOC%
+
+%WEB% is based on the [[System.BioKbPlugin][BioKb]] plugin for Foswiki. For admisistrators this provides a template structure and various functions for a wiki based on a biological pathway; while editing functions are made available to topic contributors.
+
+---++ Concepts
+
+A [[System.BioKbPlugin][BioKb]] - based wiki such as %WEB% is intended to form an integrated resource for any desired information related to a given biological system. Functions are provided to help 'seed' the wiki with basic biological information such as pathways, genes, compounds and references. Each page created comprises two parts: a structured table of data, and a 'free text' area, where most of the 'added value' from contributors will be placed. The structured region is edited via special functions to main the integrity of the data, with source and most recent editor clearly displayed, while the free text region is freely editable in the true wiki philosophy.
+
+---++ Editing 
+
+!BioKb wikis, such [[%WEB%.WebHome][%WEB%]], are intended to combine the benefits of automatic and manual annotations. Users can participate these ways:
+
+   * Create new pages:
+      1. Select 'create' from the menu bar, and select the type of topic you wish to create. 
+      2. You will be provided with a set of fields which will form a structured section of your new page. Fill these in and press 'create topic'. Topic types are defined by an administration function- talk to whoever set up your wiki to define new types
+      3. You now have a page with a structured region, which you can edit via a form by pressing 'Edit Structured Data', and an unstructured region that can be modified by pressing the 'Edit' button in the menu bar. Default content (e.g. headings etc) can be specified by creating a new topic called &lt;TOPIC TYPE&gt;Template (options > new topic) and placing the default content in that. Foswiki syntax can be used to create headings, lists etc very simply, see [[System/TextFormattingRules][this page]] for help.
+
+   * Edit pages other people have created, either structured (via form), or free text (via 'edit' button)
+   * You can attach files by using Options > Attach from the menu bar. 
+   * You will need to register to be able to edit pages, and any changes you make will be logged.
+
+---++ Administration
+
+%TWISTY{
+mode="div"
+showlink="Show admin"
+hidelink="Hide admin"
+showimgleft="%ICONURLPATH{toggleopen-small}%"
+hideimgleft="%ICONURLPATH{toggleclose-small}%"
+}%
+
+[[System.BioKbPlugin][BioKb]] will help to create and maintain a focused biological wiki in the following ways:
+
+   * Provide initial structure for a wiki. For example a sensible default front page with useful information for the user is present by default, as is a [[%WEB%/BrowseSite][page summarising wiki content]]. 
+   * Derive seed data via ids related to external entities- genes, references etc
+   * Define custom data types, which will then be automatically made available in the 'create' and 'edit' functions
+   * Maintain a dictionary of synonyms based on titles, and synonyms (if provided in the type definition), and use these synonyms to link terms throughout the wiki back to this topic. This augments the automatic linking of 'wikiwords' already present in Foswiki
+
+---+++ Setting up a !BioKb wiki
+
+If you're reading this you've probably done this but the steps are:
+
+   1. Log in to Foswiki as member of Main.AdminGroup
+   2. Install BioKbPlugin, its dependencies, and their dependencies
+   3. Create a new web in System.ManagingWebs, emplying the _BioKbPlugin as the template web
+   4. Retrieve these files, and place in &lt;FOSWIKI_ROOT&gt;/working/work_areas/BioKbPlugin:
+      * KEGG: [[ftp://ftp.genome.jp/pub/kegg/pathway/map_title.tab][List of KEGG pathway names and IDs]]
+      * KEGG: [[ftp://ftp.genome.jp/pub/kegg/linkdb/genes/genes_ncbi-geneid.list][Mappings between KEGG gene IDs and NCBI gene IDs]]
+      * OMIM: [[ftp://ftp.ncbi.nih.gov/repository/OMIM/omim.txt.Z][Text file of the omim database]] - note [[http://www.ncbi.nlm.nih.gov/Omim/restrictions.html][http://www.ncbi.nlm.nih.gov/Omim/restrictions.html]] - BioKb only uses this file for summary information. 
+   5. Seed your wiki with basic data, employing the functions at AdminSeed (only KEGG for now)
+   6. Create more topic types in AdminFormFields, following the examples already present. These types will be added to the 'create' menu. If you attach images and assign them to topic types, they will be used to represent that topic type- for example in BrowseSite
+   7. Follow the instructions on your WebHome to produce the desired appearance
+   8. Modify WebTopBar to produce the desired text in your header
+   9. Check the permissions specified in WebPreferences to ensure that your users can edit the wiki. Default behaviour of BioKb is to not allow edits by guest users
+
+---+++ Maintenance
+
+   * The index files for KEGG et al (see above) will date. Replace them with newer versions periodically, as required.
+   * For speed, and so as not to punish remote servers, content from KEGG etc is also cached in BioKb's work area (see above). You might want to delete this cache (very) occasionally so that updates to KEGG are reflected in created topics.
+   * The dictionary used to cross-link articles is automatically maintained at AdminDictionary, using topic titles and synonyms (where topic types have been created with a Synonyms field). Linking should mostly happen automatically, but a funtion in this page can be used to force a scan for links. 
+
+%ENDTWISTY%

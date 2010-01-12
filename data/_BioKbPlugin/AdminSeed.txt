@@ -1,0 +1,6 @@
+%META:TOPICINFO{author="BaseUserMapping_333" date="1238062952" format="1.1" version="1.2"}%
+%META:TOPICPARENT{name="Admin"}%
+%MOLBIOL_SEARCH_FORM{}%
+
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="MolbiolWithHeaderHidden"}%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

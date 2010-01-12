@@ -1,4 +1,60 @@
 # Release manifest for BioKbPlugin
 data/System/BioKbPlugin.txt 0644 Documentation
 lib/Foswiki/Plugins/BioKbPlugin.pm 0644 Perl module
-
+data/_BioKbPlugin/About.txt 0644 Topic to introduce wiki
+data/_BioKbPlugin/Admin.txt 0644 Parent for admin topics
+data/_BioKbPlugin/AdminContentLimits.txt 0644 Define limits on auto-derived content
+data/_BioKbPlugin/AdminDatabaseURLs.txt 0644 Specify remote URLs
+data/_BioKbPlugin/AdminDictionary.txt 0644 Store a dictionary of terms related to topics
+data/_BioKbPlugin/AdminEditDatabaseURLs.txt 0644 Embedded function: form for editing remote URLs, and correcting throughout the system
+data/_BioKbPlugin/AdminFormFields.txt 0644 Specify structure of topics and forms used- can be expanded to new types by admin
+data/_BioKbPlugin/AdminSeed.txt 0644 Form functions for seeding the wiki
+data/_BioKbPlugin/BrowseSite.txt 0644 Summary page for wiki
+data/_BioKbPlugin/ContactUs.txt 0644 Contacts page
+data/_BioKbPlugin/CreateForm.txt 0644 Embedded function: create a topic of given type
+data/_BioKbPlugin/FrontImage.txt 0644 Put an image here to be displayed on the front page (WebHome)
+data/_BioKbPlugin/FrontPageHiddenTemplate.txt 0644 Template specifiying front page panel structure, hooked into the CSS
+data/_BioKbPlugin/GetHelp.txt 0644 Place to put some user docs
+data/_BioKbPlugin/MainLayoutHiddenTemplate.txt 0644 Main template specifiying content topic structure- data panel imported, etc
+data/_BioKbPlugin/QuickMenuBar.txt 0644 QuickMenuSkin Menu bar defined with BioKb functions
+data/_BioKbPlugin/SearchByType.txt 0644 More useful search functions here
+data/_BioKbPlugin/StatsMostViewed.txt 0644 Displays a list of recently added and viewed topics
+data/_BioKbPlugin/StatsRecentActivity.txt 0644 Show all recent additions and edits
+data/_BioKbPlugin/WebHome.txt 0644 Home page, importing front page template
+data/_BioKbPlugin/WebPreferences.txt 0644 Preferences topic, defining css locations, permissions etc
+data/_BioKbPlugin/WebTopBar.txt 0644 Custom top bar
+lib/Foswiki/Plugins/BioKbPlugin.pm 0644 Main plugin module
+lib/Foswiki/Plugins/BioKbPlugin/BioKb.pm 0644 common plugin functions
+lib/Foswiki/Plugins/BioKbPlugin/Disease.pm 0644 disease-specific (e.g. OMIM) functions
+lib/Foswiki/Plugins/BioKbPlugin/Literature.pm 0644 literature (e.g. pubmed)- specific functions
+lib/Foswiki/Plugins/BioKbPlugin/MolecularBiology.pm 0644 mol biol (e.g. kegg) specific functions
+pub/System/BioKbPlugin/_BioKb_accept2.png 0644 Icon to indicate topic present/ to be added
+pub/System/BioKbPlugin/_BioKb_not2.png 0644 Icon to indicate topic absent/ to be removed
+pub/System/BioKbPlugin/biokb.css 0644 all css definitions
+pub/System/BioKbPlugin/checkAllToggle.js 0644 simple toggle checkboxes function
+pub/System/BioKbPlugin/dynamicFormField.js 0644 add/remove fields in forms
+pub/System/BioKbPlugin/kegg_to_ncbi.txt 0644 kegg to NCBI gene mapping
+pub/System/BioKbPlugin/moocheck.js 0644 replace checkbox with image
+pub/System/BioKbPlugin/mootools.js 0644 mootools js library
+pub/System/BioKbPlugin/morbidmap 0644 morbidmap indicating gene/disease associations
+pub/System/BioKbPlugin/raaswiki.png 0644 image of RAASWiki summary page
+templates/attach.biokb.tmpl 0444
+templates/attachagain.biokb.tmpl 0444
+templates/attachnew.biokb.tmpl 0444
+templates/attachtables.biokb.tmpl 0444
+templates/css.biokb.tmpl 0444
+templates/data.biokb.tmpl 0644
+templates/edit.biokb.tmpl 0444
+templates/foswiki.biokb.tmpl 0444
+templates/frontpage.biokb.tmpl 0644
+templates/login.biokb.tmpl 0444
+templates/mainlayout.biokb.tmpl 0644
+templates/moveattachment.biokb.tmpl 0444
+templates/oops.biokb.tmpl 0444
+templates/oopsgeneric.biokb.tmpl 0444
+templates/oopsmore.biokb.tmpl 0644
+templates/rename.biokb.tmpl 0444
+templates/renamebase.biokb.tmpl 0444
+templates/search.biokb.tmpl 0444
+templates/settings.biokb.tmpl 0444
+templates/view.biokb.tmpl 0444

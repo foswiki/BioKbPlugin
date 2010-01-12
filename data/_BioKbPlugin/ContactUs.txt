@@ -1,0 +1,6 @@
+%META:TOPICINFO{author="DonaldDunbar" date="1248859806" format="1.1" reprev="1.3" version="1.3"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+<p>Email the <a href="mailto:foo@bar.org">%WEB% Administrators</a></p>
+
+<p>Telephone: +44 131 242 6700</p>

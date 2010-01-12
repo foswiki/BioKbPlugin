@@ -1,0 +1,248 @@
+%META:TOPICINFO{author="JonathanManning" date="1256055238" format="1.1" version="1.12"}%
+%META:TOPICPARENT{name="Admin"}%
+---++ fields
+
+Define all fields that will comprise the topics. These parameters define the structure of both input forms and data topics.
+
+   * field = field name
+
+   * type = The type of data topic this field belongs in. fields Common to all (e.g. title) have a type of 'Common'
+
+   * size = The field size to be be used. Small produces a simple small text field, while medium and large produce multi-line text areas
+   * default = Any default text to be placed in the forms at this field
+
+   * category = Which area of the form/topic this field occurs in. At time of writing this was 'Summary Information', 'Data', 'Annotation' and 'References', but you can add more by simply assigning new or existing fields a different category, paying attention to order.
+
+   * databases = If the text field is a database ID, assigning a list of these databases to this column will produce a corresponding drop-down box in input forms. If the database has a URL in AdminDatabaseURLs, a link will be created.
+
+
+*Order Matters!* Categories and fields will appear in the order they are defined here. Group fields by category, and apply the desired ordering between and within categories.
+
+---++++ Template
+
+
+
+
+Create your own topic type definitions from this very basic example
+
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Database Links | small | | GeneCards, OMIM, RGD Genes, NCBI-GI, NCBI-GeneID, HPRD, HGNC, Ensembl, UniProt, GeneCards, MGI, RatMap, FlyBase, WormBase, Pubchem | KEGG |
+| Synonyms | medium | one per line | | iHOP |
+| *Annotation* |||||
+| General | medium | | | |
+| Disease | medium | | | |
+| Function | medium | | | |
+| *References* |||||
+| PubMed | medium | comma-delimied list of PMIDs | | |
+
+
+---++++ Gene
+
+class=MolecularBiology
+image=_BioKb_molbiol.png
+descriptor=Descriptions of genes and protein products
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Text Summary | large | | | KEGG |
+| Synonyms | medium | one per line | | iHOP |
+| MeSH Terms | medium | one per line | | MeSH |
+| iHOP | small | | | iHOP |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Entry | small | | | |
+| Species | small | | | KEGG |
+| Database Links | small | | GeneCards, OMIM, RGD Genes, NCBI-GI, NCBI-GeneID, HPRD, HGNC, Ensembl, UniProt, GeneCards, MGI, RatMap, FlyBase, WormBase, Pubchem | KEGG |
+| Symbol | small | | | KEGG |
+| Orthology | small | | KEGG Orthology | KEGG |
+| Pathway | small | | KEGG PATH | KEGG |
+| Position | small | | | KEGG |
+| Motif | small | | Pfam, PROSITE | KEGG |
+| Structure | small | | PDB | KEGG |
+| Protein Sequence | large | | | KEGG | 
+| DNA Sequence | large | | | KEGG |
+| Codon Usage | medium | | | KEGG |
+
+---++++ Compound
+
+class=MolecularBiology
+image=Angiotensin_II.png
+descriptor=Associated compounds
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| MeSH Terms | medium | one per line | | MeSH |
+| Definition | small | | | KEGG |
+| Synonyms | medium | one per line | | iHOP |
+| *Data* |||||
+| Species | small | | | KEGG |
+| Formula | small | | | KEGG |
+| Mass | small | | | KEGG |
+| Sequence | medium | | | KEGG |
+| Database Links | small | | PubChem, CAS, 3DMET, ChEBI, PDB-CCD | KEGG |
+| Symbol | small | | | KEGG |
+| Pathway | small | | KEGG PATH | KEGG |
+
+
+---++++ Animal Model
+
+class=MolecularBiology
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| Species | small | | | KEGG |
+| MeSH Terms | medium | one per line | | MeSH |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Strain | small | | | |
+| Database Links | small | | MGI, RatMap, FlyBase, WormBase, RGD Strains | KEGG |
+| Genes | small | | KEGG Gene, GeneCards, NCBI-GeneID, Ensembl | |
+| Animal Source | small | | | |
+| Synonyms | medium | | | |
+| *Annotation* |||||
+| General | medium | | | |
+| Disease | medium | | | |
+| Function | medium | | | |
+| Physiology | medium | | | |
+| Drugs | medium | | | |
+| *References* |||||
+| PubMed | medium | comma-delimied list of PMIDs | | |
+
+
+---++++ Gene Expression
+
+class=MolecularBiology
+
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Platform | small | | | |
+| Database Links | small | | GEO, ArrayExpress | |
+| *Annotation* |||||
+| General | medium | | | |
+| Disease | medium | | | |
+| Function | medium | | | |
+| *References* |||||
+| PubMed | medium | comma-delimied list of PMIDs | | |
+
+
+---++++ Orthologous Group
+
+class=MolecularBiology
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| MeSH Terms | medium | one per line | | MeSH |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Genes | small | | KEGG Gene, GeneCards, NCBI-GeneID, Ensembl | |
+| *Annotation* |||||
+| General | medium | | | |
+| Disease | medium | | | |
+| Function | medium | | | |
+| Physiology | medium | | | |
+| Drugs | medium | | | |
+| *References* |||||
+| PubMed | medium | comma-delimied list of PMIDs | | |
+
+
+---++++ Pathway
+
+class=MolecularBiology
+image=Renin_ang_pathway_2.jpg
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Text Summary | large | | | KEGG |
+| *Data* |||||
+| Entry | small | | | |
+| Species | small | | | KEGG |
+| Genes | small | | KEGG Gene, GeneCards, NCBI-GeneID, Ensembl | |
+| Compounds | small | | KEGG Compound | |
+
+---++++ Drug
+
+class=Disease
+image=Prozac_pills.jpg
+descriptor=Drugs with actions associated with this system
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| MeSH Terms | medium | one per line | | MeSH |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Formula | small | | | KEGG |
+| Mass | small | | | KEGG |
+| Target | small | | | KEGG |
+| Activity | small | | | KEGG |
+| Products | medium | | | KEGG |
+| Sequence | medium | | | KEGG |
+| Database Links | small | | PubChem, CAS, 3DMET, ChEBI, PDB-CCD | KEGG |
+| Symbol | small | | | KEGG |
+| Synonyms | medium | one per line | | iHOP |
+| Pathway | small | | KEGG PATH | KEGG |
+| *Annotation* |||||
+| General | medium | | | |
+| Disease | medium | | | |
+| Function | medium | | | |
+| *References* |||||
+| PubMed | medium | comma-delimied list of PMIDs | | |
+
+---++++ Disease
+
+class=Disease
+image=_BioKb_rie3.jpg
+descriptor=Disease states associated with this system
+
+| *field* | *size* | *default* | *databases* | *default source* |
+| *Summary Information* |||||
+| Title | small | | | |
+| Entry | small | | | |
+| Text Summary | large | | | KEGG |
+| *Data* |||||
+| Definition | small | | | KEGG |
+| Database Links | small | | GeneCards, OMIM, RGD Genes, NCBI-GI, NCBI-GeneID, HPRD, HGNC, Ensembl, UniProt, GeneCards, MGI, RatMap, FlyBase, WormBase, Pubchem | KEGG |
+| Synonyms | medium | one per line | | iHOP |
+
+
+---++++ Reference
+
+class=Reference
+image=_BioKb_BritishMuseumReadingroom.jpg
+descriptor=Particularly relevant papers
+
+
+
+%META:FILEATTACHMENT{name="_BioKb_molbiol.png" attachment="_BioKb_molbiol.png" attr="" comment="" date="1255619541" path="_BioKb_molbiol.png" size="33114" stream="IO::File=GLOB(0xa4456e4)" tmpFilename="/usr/tmp/CGItemp51276" user="JonathanManning" version="2"}%
+%META:FILEATTACHMENT{name="_BioKb_BritishMuseumReadingroom.jpg" attachment="_BioKb_BritishMuseumReadingroom.jpg" attr="" comment="" date="1255619629" path="_BioKb_BritishMuseumReadingroom.jpg" size="20357" stream="IO::File=GLOB(0xad063e4)" tmpFilename="/usr/tmp/CGItemp47661" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="Prozac_pills.jpg" attachment="Prozac_pills.jpg" attr="" comment="" date="1255622777" path="Prozac_pills.jpg" size="1036558" stream="IO::File=GLOB(0x994f834)" tmpFilename="/usr/tmp/CGItemp47732" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="Angiotensin_II.png" attachment="Angiotensin_II.png" attr="" comment="" date="1255623495" path="Angiotensin_II.png" size="215448" stream="IO::File=GLOB(0xa382314)" tmpFilename="/usr/tmp/CGItemp47666" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="_BioKb_rie3.jpg" attachment="_BioKb_rie3.jpg" attr="" comment="" date="1255687850" path="_BioKb_rie3.jpg" size="10668" stream="IO::File=GLOB(0x991e1c4)" tmpFilename="/usr/tmp/CGItemp47819" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="Renin_ang_pathway_2.jpg" attachment="Renin_ang_pathway_2.jpg" attr="" comment="" date="1255969826" path="Renin_ang_pathway_2.jpg" size="18781" stream="IO::File=GLOB(0x9688c0c)" tmpFilename="/usr/tmp/CGItemp21571" user="JonathanManning" version="1"}%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

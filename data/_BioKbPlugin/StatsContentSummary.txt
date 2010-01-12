@@ -1,0 +1,4 @@
+%META:TOPICINFO{author="JonathanManning" date="1255452160" format="1.1" reprev="1.1" version="1.1"}%
+%META:TOPICPARENT{name="WebHome"}%
+<h1><b>Summary of Content</b></h1> 
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

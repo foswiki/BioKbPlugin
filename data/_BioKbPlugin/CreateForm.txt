@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_333" date="1238062951" format="1.1" version="1.2"}%
+%MOLBIOL_FORM{}%
+<style type="text/css" media="all">
+    .littab{visibility:hidden}
+    .diseasetab{visibility:hidden}
+    .vote{display:none}
+</style>
+
+
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="MolbiolHidden"}%

@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="JonathanManning" date="1257176385" format="1.1" reprev="1.2" version="1.2"}%
+
+Attach an image file of your choice to FrontImage, ammend the 'img' link in
+FrontImage, and delete this text.
+
+<img class='frontimage' src='%PUBURL%/%WEB%/%TOPIC%/YOURFILE'>
+

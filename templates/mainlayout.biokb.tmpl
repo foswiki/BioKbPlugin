@@ -1,0 +1,23 @@
+%TMPL:INCLUDE{"view"}%
+
+
+%TMPL:DEF{"createlink"}%
+<span class="foswikiNewLink adddata"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/Data%TOPIC%?topicparent=%WEB%.%TOPIC%" rel="nofollow" title="%MAKETEXT{"Create this topic"}%">%MAKETEXT{"Create data file"}%</a></span>
+%TMPL:END%
+
+%TMPL:DEF{"content"}%
+
+<div class="foswikiTopicText">
+<div class="datatable">
+
+<div class="vote">%VOTE{id="Rate" stars1="Rate this topic"}%</div>
+
+%IF{"istopic '%WEB%.Data%TOPIC%'" then="$percntTMPL:P{$quoteditlink$quot}$percnt$percntINCLUDE{$quot%WEB%.Data%TOPIC%$quot}$percnt" else="$percntTMPL:P{$quotcreatelink$quot}$percnt"}%
+
+</div>
+%TEXT%
+</div>
+%BR% %TMPL:P{"form"}%%TMPL:P{"attachments"}%%TMPL:P{"topicinfo"}%
+
+#TopicEnd
+%TMPL:END%

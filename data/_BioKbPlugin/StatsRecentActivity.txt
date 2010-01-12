@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="JonathanManning" date="1257520614" format="1.1" reprev="1.3" version="1.3"}%
+<h1><b>Recent activity</b></h1> 
+
+<div id="stats"><div id="statsright"><span class='inlineheader'>Topic edits:</span>
+
+%SEARCH{"preferences[name='TOPIC_TYPE']" web="%WEB%" type="query" format="$percntCALC{$IF($SUM($percntREVINFO{$quot$dollarrev$quot topic=$quot$topic$quot}$percnt, $percntREVINFO{$quot$dollarrev$quot topic=$quotData$topic$quot}$percnt ) == 2, ,[[$wikiusername][$wikiname]] edited $formfield('TOPIC_TYPE') [[$topic]] <br />)}$percnt" separator="" nonoise="1" order="modified" reverse="1"}%
+
+</div><div id="statsleft"><span class='inlineheader'>Topics created:</span>
+
+%SEARCH{"preferences[name='TOPIC_TYPE']" web="%WEB%" type="query" format="$percntCALC{$IF($SUM($percntREVINFO{$quot$dollarrev$quot topic=$quot$topic$quot}$percnt, $percntREVINFO{$quot$dollarrev$quot topic=$quotData$topic$quot}$percnt ) == 2, [[$wikiusername][$wikiname]] added [[$topic]] <br />,)}$percnt" separator="" nonoise="1" order="created" reverse="1"}%
+
+</div></div>
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

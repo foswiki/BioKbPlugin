@@ -1,0 +1,4 @@
+%{ This is a default template }%%TMPL:INCLUDE{"attachagain"}%
+
+%TMPL:DEF{"topicactionbuttons"}%<input type="submit" class="foswikiSubmit" value="%MAKETEXT{"Upload file"}%" /><input type="submit" class="foswikiSubmit" name="changeproperties" value="%MAKETEXT{"Change properties only"}%" />&nbsp;&nbsp;-&nbsp;&nbsp;<a href="%SCRIPTURLPATH{"rename"}%/%WEB%/%TOPIC%?template=moveattachment&attachment=%ENCODE{%FILENAME%}%" rel='nofollow'><span class="foswikiLinkLabel">%MAKETEXT{"Move or Delete"}%</span></a>  =%FILENAME%= 
+%TMPL:P{"canceltopicaction"}%%TMPL:END%

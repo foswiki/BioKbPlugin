@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="AdminGroup" date="1251129614" format="1.1" version="1.3"}%
+---+++ Use this topic to define the limits of the content retrieved automatically from KEGG etc
+
+| *Parameter* | *Description* | *Value* |
+| model_organisms | KEGG codes for model organisms from which to derive | hsa, ptr, mmu, rno, gga, xla, xtr, dre, dfru, dme, cel |
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

@@ -1,0 +1,3 @@
+%META:TOPICINFO{author="AdminGroup" date="1251129614" format="1.1" version="1.3"}%
+%FORM_EDIT_URLS%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="TWikiAdminGroup"}%

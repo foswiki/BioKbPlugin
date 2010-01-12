@@ -1,0 +1,85 @@
+%TMPL:INCLUDE{"view"}%
+
+%TMPL:DEF{"content"}%<div class="foswikiTopicText">
+<div id='date'>%DATETIME{"$lwday, $day $month $year"}%</div>
+<div class='contentbox'>
+	<div class='boxone boxleft'>
+		<b class="spiffy">
+		<b class="spiffy1"><b></b></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy5"></b></b>
+		<div class="spiffyfg">
+			 %INCLUDE{"About"}%
+		</div>
+		<div class="readmore">[[About][(read more)]]</div>
+		<b class="spiffy">
+		<b class="spiffy5"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy1"><b></b></b></b>
+	</div>
+	<div class='boxtwo boxright'>
+		<b class="spiffy">
+		<b class="spiffy1"><b></b></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy5"></b></b>
+		<div class="spiffyfg">
+			%IFEXISTS{"FrontImage" then="%INCLUDE{%WEB%/FrontImage}%" else="Place an image of your choice in FrontImage and it will be displayed here"}% 
+		</div>
+		<b class="spiffy">
+		<b class="spiffy5"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy1"><b></b></b></b>
+	</div>
+</div>
+<div class='contentbox'>
+	<div class='boxthree boxleft'>
+		<b class="spiffy">
+		<b class="spiffy1"><b></b></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy5"></b></b>
+		<div class="spiffyfg">
+			%MAKETEXT{"<h1><b>Page of the month:</b></h1>"}%
+			%IFEXISTS{"%PAGEOFTHEMONTH%" then="%INCLUDE{%WEB%/%PAGEOFTHEMONTH%}%" else="Edit WebPreferences and define PAGEOFTHEMONTH to a valid topic"}% 
+		</div>
+		<div class="readmore">[[%PAGEOFTHEMONTH%][(read more)]]</div>
+		<b class="spiffy">
+		<b class="spiffy5"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy1"><b></b></b></b>
+	</div>
+	<div class='boxfour boxright'>
+		<b class="spiffy">
+		<b class="spiffy1"><b></b></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy5"></b></b>
+		<div class="spiffyfg">
+		
+		%INCLUDE{%WEB%/StatsMostViewed}%
+		
+		</div>
+		<div class="readmore">[[StatsMostViewed][(read more)]]</div>
+		<b class="spiffy">
+		<b class="spiffy5"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy1"><b></b></b></b>
+	</div>
+</div>
+
+</div>
+%TMPL:END%

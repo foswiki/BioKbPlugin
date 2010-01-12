@@ -1,0 +1,67 @@
+%TMPL:INCLUDE{"foswiki"}%
+
+%TMPL:DEF{"templatescript"}%
+<script type="text/javascript">
+//<![CDATA[
+	var pageElem = document.rename;
+//]]>
+</script>
+<script type="text/javascript" src="%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/foswiki_renamebase.js"></script>
+%TMPL:END%
+
+
+%TMPL:DEF{"helpnotes"}%
+<ul style="font-size:80%;margin:0">
+  <li> %MAKETEXT{"Get help on <a target='ManagingTopics' onclick=\"return launchWindow('[_1]','ManagingTopics')\" href=\"[_2]\" rel='nofollow'>Renaming and moving topics</a>." args="%SYSTEMWEB%,%SCRIPTURLPATH{"view"}%/%SYSTEMWEB%/ManagingTopics"}%
+  <li> Select the %TRASHWEB% Web to delete the topic.
+  <li> %MAKETEXT{"The checkmarked topics will be updated (another form will appear which will _eventually_ allow you to rename any topics that were locked)"}%
+</ul>
+%TMPL:END%
+
+
+%TMPL:DEF{"content"}%<form method="post" name="rename" action="%SCRIPTURLPATH{"rename"}%/%WEB%/%TOPIC%">
+%TMPL:P{"simpleheader"}%
+<div class="foswikiTopic">
+---+ %TMPL:P{"webaction"}% %TOPIC%
+
+%TWISTY{
+mode="div"
+showlink="<a href='#' class='twistyTrigger'>Show help</a>"
+hidelink="<a href='#' class='twistyTrigger'>Hide help</a>"
+showimgleft="%ICONURLPATH{toggleopen-small}%"
+hideimgleft="%ICONURLPATH{toggleclose-small}%"
+remember="on"
+start="hide"
+class="foswikiHelp"
+}%
+%TMPL:P{"helpnotes"}%
+%ENDTWISTY%
+
+| |  *Web:* | *Topic:* |
+|  *From:* | %WEB%. | &nbsp;%TOPIC% |
+|  *To:* |  %TMPL:P{"newweb"}% | %TMPL:P{"newtopic"}%|
+
+%TMPL:P{"notes"}%
+
+---++ Change links in topics that refer to <nop>%TOPIC% in the <nop>%WEB% Web:
+
+%LOCAL_SEARCH%
+
+---++ Change links in topics that refer to <nop>%WEB%.<nop>%TOPIC% in any Web:
+
+%GLOBAL_SEARCH%
+
+<input type="button" value='%MAKETEXT{"Select all"}%' onclick="checkAll(true);" />&nbsp;<input type="button" value='%MAKETEXT{"Clear all"}%' onclick="checkAll(false);" /> checkboxes of referenced topics
+
+%TMPL:P{"topicactionbuttons"}%
+%TMPL:P{"topicinfo"}%
+
+</div></form>%TMPL:END%
+
+%TMPL:DEF{"rename"}%
+%TMPL:P{"htmldoctype"}%
+%TMPL:P{"head"}%
+%TMPL:P{"bodystart"}%
+%TMPL:P{"main"}%
+%TMPL:P{"bodyend"}%
+%TMPL:END%

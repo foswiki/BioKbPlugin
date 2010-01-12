@@ -1,0 +1,97 @@
+%TMPL:INCLUDE{"foswiki"}%
+
+%TMPL:DEF{"templatescript"}%
+<script type="text/javascript" src="%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/foswiki_attach.js"></script>
+%TMPL:END%
+
+
+%TMPL:DEF{"existingattachments"}%</p>
+<h2 class="twistyMakeHidden">%MAKETEXT{"Existing attachments"}%</h2>
+
+
+%TWISTY{
+mode="div"
+showlink="<a href='#' class='twistyTrigger'>Show existing attachments</a>"
+hidelink="<a href='#' class='twistyTrigger'>Hide existing attachments</a>"
+showimgleft="%ICONURLPATH{toggleopen-small}%"
+hideimgleft="%ICONURLPATH{toggleclose-small}%"
+remember="on"
+start="show"
+}%
+
+%META{"attachments" all="on"}% <script type="text/javascript">
+//<![CDATA[
+	var attTable = document.getElementById("foswikiAttachmentsTable");
+	if (attTable) {
+		var count = " (" + (attTable.getElementsByTagName("tr").length - 1) + ")";
+		document.getElementById('attachmentsshowlink').firstChild.data += count;
+		document.getElementById('attachmentshidelink').firstChild.data += count;
+	}
+//]]>
+</script>
+
+%ENDTWISTY%
+%TMPL:END%
+
+%TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
+<div class=foswikiTopicText>
+---+ %MAKETEXT{"Attach image or document on [_1]" args="%TOPIC%"}%
+
+%TWISTY{
+mode="div"
+showlink="<a href='#' class='twistyTrigger'>Show help</a>"
+hidelink="<a href='#' class='twistyTrigger'>Hide help</a>"
+showimgleft="%ICONURLPATH{toggleopen-small}%"
+hideimgleft="%ICONURLPATH{toggleclose-small}%"
+remember="on"
+start="hide"
+class="foswikiHelp"
+}%
+%TMPL:P{"notes"}%
+%ENDTWISTY%
+
+<form name="main" enctype="multipart/form-data" action="%SCRIPTURLPATH{"upload"}%/%WEB%/%TOPIC%" method="post">
+%TMPL:P{"previousdetails"}%
+<table width="100%">
+   %TMPL:P{"previous"}%
+ <tr>
+  <td align="right">
+   Local file:
+  </td><td>
+   <input type="hidden" name="filename" value="%FILENAME%" />
+   <input type="file" name="filepath" value="%FILEPATH%" size="50" />
+  </td>
+ </tr>
+ <tr>
+  <td align="right">
+   Comment:
+  </td><td>
+   <input type="text" name="filecomment" value="%FILECOMMENT%" maxlength="256" size="50" />
+  </td>
+ </tr>
+ <tr>
+  <td align="right">
+   Link:
+  </td><td>
+   <input type="checkbox" name="createlink" %ATTACHLINKBOX% /> Create a link to the attached file at the end of the topic.
+  </td>
+ </tr>
+ <tr>
+  <td align="right">
+   Hide file:
+  </td><td>
+   <input type="checkbox" name="hidefile" %HIDEFILE% /> Hide attachment in normal topic view.
+  </td>
+ </tr>
+</table>
+%TMPL:P{"extranotes"}%
+%TMPL:P{"topicactionbuttons"}%
+%TMPL:P{"existingattachments"}%%TMPL:P{"topicinfo"}%</form></div>%TMPL:END%
+
+%TMPL:DEF{"notes"}%
+   * %MAKETEXT{"*Help:* Please see <a target='Macro' onclick=\"return launchWindow('[_1]','FileAttachment')\" href='' rel='nofollow'>FileAttachment</a> for more information about attaching files." args="%SYSTEMWEB%"}%
+   * *File size:* %IF{"$ATTACHFILESIZELIMIT > 0" then="You can upload files up to %ATTACHFILESIZELIMIT% KB in size." else="There is no size limit for uploaded files."}%
+   * *Link checkbox:* If the attached file is a JPG, GIF or PNG image and you check the box, it will create an inline image (e.g. show the image) at the end of the topic.  For other file types a simple link will be created.
+   * %MAKETEXT{"*Bug:* Internet Explorer 4.0 or earlier: If you get an \"Internal Server Error\" message when you upload a file, you need to try again. It should work the second time."}%
+%TMPL:END%
+

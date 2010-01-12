@@ -1,32 +1,128 @@
+%META:TOPICINFO{author="JonathanManning" date="1257850641" format="1.1" reprev="1.4" version="1.4"}%
 ---+!! !BioKbPlugin
 <!--
 One line description, required for extensions repository catalog.
-BuildContrib will fill in the SHORTDESCRIPTION with the value of
-$SHORTDESCRIPTION from the .pm module, or you can redefine it here if you
-prefer.
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+   * Set SHORTDESCRIPTION = Create a knowledgebase for a biological system of choice
 -->
 %SHORTDESCRIPTION%
 
 %TOC%
 
+---++ Introduction
+
+!BioKbPlugin is designed to provide a set of functions to establish a biological knowledgebase (hence !BioKb), starting from a seed of data derived from common online biological resources. Initially written for TWiki with PatternSkin in mind, this version was written within Foswiki, and employs the cleaner interface of QuickMenuSkin, with some significant mofidifications in the form of overrides in template files.  A series of administration topics are provided, which allow control of topic structure for all topics created through !BioKbPlugin functions, and specify, for example, the root URLs to which IDs can be added to create links to external databases.
+
+Functions are provided for population of the wiki in several ways, in addition to those available natively in Foswiki:
+
+   * Form-based
+   * Automatic by providing external IDs
+   * Interactive- add by selecting results from remote searches
+
+The envisaged application of this is to populate a wiki with some seed data, which can later be manually annotated and built upon in a more manual way. Automatic generation a 'data topic' imposes some consistent, core structure that can be parsed easily (via special included functions). This is made use of to allow a form to be re-generated from topics built in this way, allowing editing by non-technical users, bypassing the requirement of wiki syntax use. This data topic is then embedded within a normal topic, allowing the subject of the data to be annotated and disucussed in a more 'wiki' way. 
+
+---++ Feedback
+
+Disclaimer: I am not a computer scientist :-). I'd welcome any constructive criticism, especially if it comes with the offer of help in expanding functionality or tidying-up (e.g. see template issues below).
+
 ---++ Usage
+
+---+++ Initialisation
+
+The below assumes you have a functional Foswiki installation (!BioKb was developed with Foswiki version 1.07) and that you have successfully installed !BioKb by following the [[#install][instructions]] below.
+
+   1. Log in to Foswiki as member of Main.AdminGroup
+   2. Create a new web in System.ManagingWebs, emplying the !_BioKbPlugin as the template web. This will provide many of the utility topics necessary for !BioKbPlugin use, as well as a set of starting content for the front page, a web summary topic, etc.
+   4. Seed your wiki with basic data, employing the functions at AdminSeed (only KEGG for now), or via the topic creation functions provided in the menu bar
+   5. Create more topic types in AdminFormFields, following the examples already present. These types will be added to the 'create' menu. If you attach images and assign them to topic types, they will be used to represent that topic type- for example in BrowseSite. If you include a 'Synonyms' field (copy from other examples), then terms placed in that field will be added to the dictionary and used for linking-back.
+   6. Follow the instructions on your WebHome to produce the desired appearance
+   7. Modify WebTopBar to produce the desired text in your header
+   8. Check the permissions specified in WebPreferences to ensure that your users can edit the wiki. Default behaviour of BioKb is to not allow edits by guest users, but all non-admin topics are edittable after registration (though for data topics this is through the form function).
+
+---+++ Administration
+
+A number of other functions are provided for admin purposes post-seeding.
+
+   * &lt;YOUR_BIOKB_WEB&gt;/AdminDictionary : Your wiki's dictionary is maintained here, and determines which terms link to which topics. Any terms put in a 'Synonyms' field of a new topic will automatically be added to this list, but there may be times where a manual edit to remove particular terms is useful.
+   * &lt;YOUR_BIOKB_WEB&gt;/AdminDatabaseURLs : The place where the root URLs defining link-outs are placed. A manual edit will affect links created in all new topics, but if you want to correct old ones, click the button which takes you to &lt;YOUR_BIOKB_WEB&gt;/AdminEditDatabaseURLs and provides a form with which to make changes.
+   * &lt;YOUR_BIOKB_WEB&gt;/AdminContentLimits : Define the KEGG organism prefixes to specify model organisms to be considered, and whose genes will be included in Gene topics etc.
+
+---++++ Style sheet
+
+Much of the BioKb appearance is defined by a style sheet, attached to this topic, and specified via a preference in WebPreferences. Creating a new topic type in !AdminFormFields will lead to a css tag being added automatically where appropriate. E.g. creating 'Animal Model' caused assoicated divs etc to be given the 'animal_model' CSS class. You will, however, have to edit the CSS file to apply properties to any new topic types  (maybe there's a better way of doing this- it's on the list).
 
 ---++ Examples
 
+The code for !BioKbPlugin was developed alongside an application: a collaborative database/wiki on the renin angiotensin system: [[http://www.raaswiki.org][RAASWiki]].  Below is shown the summary screen present at [[%SCRIPTURL{"view"}%/_BioKbPlugin/BrowseSite][BrowseSite]] in every BioKbPlugin web.
+
+%IMAGE{"raaswiki.png"
+  type="frame" 
+  align="none" 
+  size="800"
+  caption="Illustration of the 'Browse' summary page of a !BioKb Foswiki web"
+}%
+
+---++ Known issuies
+
+As an initial release, there are a number of features still to be incorporated into BioKb, and problems to be tackled.
+
+   * A greater number of remote sources for seed data
+   * A number of more computationally intensive operations take too long to perform without feedback to the user. More user-feedback will be incorporated for these processes.
+   * *QuickMenuSkin*: I like the appearance and economy of QuickMenuSkin, but adapted it for my needs- so there are a lot of overrides in the BioKb cover used by BioKbPlugin. There are also some things which may or may not be bugs, which I worked my way around. I have a poor grasp of exactly how the templates work, but I believe that there are some lines in QuickMenuSkin's 'view' template that should by rights be in its 'foswiki' template, for inclusion in all pages. If, after you install BioKbPlugin (and dependencies), and the display looks odd, try the following (backing up before you do):
+
+      * remove these lines from view.quickmenu.tmpl (in FOSWIKI_ROOT/templates):
+
+<verbatim>
+%TMPL:P{"htmldoctype"}%
+%TMPL:P{"head"}%
+%TMPL:P{"bodystart"}%
+%TMPL:P{"main"}%
+%TMPL:P{"bodyend"}%
+</verbatim>
+
+      * remove the indicated lines from foswiki.quickmenu.tmpl:
+
+<verbatim>
+this one --->> %TMPL:DEF{"oops"}%
+%TMPL:P{"htmldoctype"}%
+%TMPL:P{"head"}%
+%TMPL:P{"bodystart"}%
+%TMPL:P{"main"}%
+%TMPL:P{"bodyend"}%
+this one --->> %TMPL:END%
+</verbatim>
+
+      * remove this line from foswiki.quickmenu.tmpl (inside the styles:default definition):
+
+<verbatim>
+remove %TMPL:INCLUDE{"css.tmpl"}% from within the styles:default definition
+</verbatim>
+
+I know this is messy, but I didn't have time when writing this to enter into discussion with the author to fix things up (seemed to be quite a lot needed fixing), and I was hacking for my own reasons anyway- for example to include a custom title bar. Assuming I haven't miss-identified bugs, will try and rectify this soon.
+
+<A NAME="install"> </A>
+
 ---++ Installation Instructions
 
-%$INSTALL_INSTRUCTIONS%
+   * Make sure the dependencies listed below are present. I've had problems getting SOAP::Lite to work with versions greater than 0.60 due to a [[http://twiki.org/cgi-bin/view/Support/SoapClientPluginInsecureDependency][seeming lack of taint safety]]. Maybe that's resolved with more recent versions than I was trying though.
+
+   * Download BioKbPlugin_installer, BioKbPlugin.md5 and BioKbPlugin.tgz or BioKbPlugin.zip from [[http://www.bioinf.mvm.ed.ac.uk/twiki/bin/view/TWiki/BioKbPlugin][here]] into your TWiki root directory (e.g. /var/www/twiki). Run the installer script and decline when prompted to check the TWiki repository for an updated package. NOTE: We have chosen not to host this plugin at the TWiki.org, due to the recent [[http://tech.slashdot.org/article.pl?sid=08/10/29/146201][split]] of the TWiki community, culminating with the formation of [[http://foswiki.org/][Foswiki]]. Once Foswiki has its first release, and we have made any necessary changes to BioKb, we will upload the plugin to this repository.
+
+   * !BioKb utilises a number of publicly available accessory files to derive annotations, which we cannot distribute, but which need to be stored locally to prevent constant calls to remote servers. The following should be downloaded and placed in the BioKb working directory (usually at <Foswiki root>/working/work_areas/BioKbPlugin/), and will be used to assemble topic content:
+      * KEGG: [[ftp://ftp.genome.jp/pub/kegg/pathway/map_title.tab][List of KEGG pathway names and IDs]]
+      * KEGG: [[ftp://ftp.genome.jp/pub/kegg/linkdb/genes/genes_ncbi-geneid.list][Mappings between KEGG gene IDs and NCBI gene IDs]]
+      * OMIM: [[ftp://ftp.ncbi.nih.gov/repository/OMIM/omim.txt.Z][Text file of the omim database]] - note [[http://www.ncbi.nlm.nih.gov/Omim/restrictions.html][http://www.ncbi.nlm.nih.gov/Omim/restrictions.html]] - BioKb only uses this file for summary information. 
+      * The ASCII format version of the Medical Subject Headings (MeSH) dictionary 'Descriptor' file from NCBI. Available [[http://www.nlm.nih.gov/cgi/request.meshdata][here]] subject to agreement to terms. Please save this as mesh_descriptions.txt in the working directory.
+   * !BioKb makes use of several !JavaScript functions, all of which are the original work of other people, but which we include with !BioKb for convenience. Graphic checkboxes are provided by [[http://lipidity.com/fancy-form/#overview][Fancy-Form]], which employs the [[http://mootools.net/][MooTools]] !JavaScript framework. 
+
 
 ---++ Info
 
 Many thanks to the following sponsors for supporting this work:
-   * Acknowledge any sponsors here
+   * Much of this work has been funded by the British Heart Foundation
 
-|  Author(s): | |
-|  Copyright: | &copy; |
+|  Author(s): | Main.JonathanManning |
+|  Copyright: | &copy; Main.JonathanManning 2009 |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
 |  Dependencies: | %$DEPENDENCIES% |

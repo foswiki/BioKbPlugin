@@ -1,5 +1,23 @@
 # Dependencies for BioKbPlugin
 # Example:
 # Time::ParseDate,>=2003.0211,cpan,Required.
-# Foswiki::Plugins,>=1.2,perl,Requires version 1.2 of handler API.
+# TWiki::Plugins,>=1.15,perl,TWiki 4.1 release.
 
+XML::Simple,2.18,cpan,Required
+XML::LibXML,>=1.69,cpan,Required
+LWP::Simple,>=5.810,cpan,Required
+Scalar::Util,>=1.19,cpan,Required
+Time::Local,>=1.18,cpan,Required
+Cwd,>=3.2501,cpan,Required
+Clone,>=0,cpan,Required
+SOAP::Lite,0.60,cpan,Required
+Foswiki::Plugins::VotePlugin,>=0,perl,Required
+Foswiki::Plugins::SpreadSheetPlugin,>=0,perl,Required
+Foswiki::QuickMenuSkin,>=0,perl,Required
+Foswiki::Contrib::RatingContrib,>=0,perl,Lines-of-stars rating module
+Foswiki::TwistyPlugin,>=0,perl,Required
+Foswiki::IfDefinedPlugin,>=0,perl,Required
+Foswiki::DateTimePlugin,>=0,perl,Required
+Foswiki::ImagePlugin,>=0,perl,Required
+Foswiki::SubscribePlugin,>=0,perl,Required
+Foswiki::SocialBookmarkingAddOn,>=0,perl,Required

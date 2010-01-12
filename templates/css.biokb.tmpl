@@ -1,0 +1,15 @@
+%{ This is a default template }%
+
+%TMPL:INCLUDE{"css"}%
+
+%TMPL:DEF{"styles:default"}%<style type="text/css" media="all">
+@import url('%PUBURLPATH%/%SYSTEMWEB%/SkinTemplates/default.css');
+%IF{ "context TwistyPluginEnabled" then="" else="
+@import url('%PUBURLPATH%/%SYSTEMWEB%/TwistyContrib/twist.css');"}%
+@import url('%PUBURLPATH%/%SYSTEMWEB%/QuickMenuSkin/qmenu.css');
+@import url('%PUBURLPATH%/%SYSTEMWEB%/QuickMenuSkin/style.css');
+%IF{ "$ QUICKMENU_USERSTYLE" then="@import url('%QUICKMENU_USERSTYLE%');"}%
+.foswikiToc LI {
+	background: url("%PUBURLPATH%/%SYSTEMWEB%/PatternSkin/bullet-down.gif") no-repeat 0 .5em;
+}
+</style>%TMPL:END%

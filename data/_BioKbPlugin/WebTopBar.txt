@@ -1,0 +1,18 @@
+	<div id="headerbar">
+        <span id="logo">
+        <h1><a href="WebHome">%WEB%</a></h1><br /><h2>&lt;Add your description here &gt;</h2>
+        </span>
+        <span id="menu">
+        <ul>
+                <li>
+                <a href="URL" style="position: absolute; right:9em;">&lt;Link to your site&gt;</a><br />
+                <br />
+                </li>
+                <li><a href="WebHome" title="">Homepage</a></li>
+                <li><a href="BrowseSite" title="">Browse</a></li>
+		<li><a href="About" title="">About</a></li>
+                <li><a href="GetHelp" title="">Help</a></li>
+                <li><a href="ContactUs" title="">Contact</a></li>
+        </ul>
+        </span>
+	</div>

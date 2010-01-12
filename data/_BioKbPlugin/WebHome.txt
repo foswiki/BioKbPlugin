@@ -1,0 +1,4 @@
+%META:TOPICINFO{author="JonathanManning" date="1255611999" format="1.1" version="1.2"}%
+
+%META:FILEATTACHMENT{name="renin-angiotensin-aldosterone_system_in_hypertension.jpg" attachment="renin-angiotensin-aldosterone_system_in_hypertension.jpg" attr="" comment="" date="1255611999" path="renin-angiotensin-aldosterone_system_in_hypertension.jpg" size="105814" stream="IO::File=GLOB(0xafe0d94)" tmpFilename="/usr/tmp/CGItemp42791" user="JonathanManning" version="1"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="FrontPageHidden"}%

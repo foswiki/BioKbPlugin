@@ -1,0 +1,10 @@
+%TMPL:INCLUDE{"view"}%
+%TMPL:DEF{"new_menuitem"}%
+pageMenu.Add();
+pageMenu.Add("%MAKETEXT{"New Topic"}%", "%SCRIPTURLPATH{"view"}%/%WEB%/WebCreateNewTopic?parent=%TOPIC%","%ICONURLPATH{"newtopic"}%","%MAKETEXT{"Create a new topic"}%");%TMPL:END%
+
+%TMPL:DEF{"topicaction"}%
+<div id='social'>%REMOVE_TOPIC%&nbsp;&nbsp;&nbsp;&nbsp;%REFRESH_LINKS{}%&nbsp;&nbsp;&nbsp;%SUBSCRIBE%&nbsp;&nbsp;&nbsp; %INCLUDE{"System.SocialBookmarkingAddOn" section="delicious" }% %INCLUDE{"System.SocialBookmarkingAddOn" section="digg" }% %INCLUDE{"System.SocialBookmarkingAddOn" section="reddit" }% %INCLUDE{"System.SocialBookmarkingAddOn" section="facebook" }% %INCLUDE{"System.SocialBookmarkingAddOn" section="stumbleupon" }%</div>
+  %TMPL:P{"revisions"}%
+%TMPL:END%
+

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="AdminGroup" date="1251129615" format="1.1" version="1.3"}%
+<FORM METHOD="LINK" ACTION="AdminEditDatabaseURLs">
+*Warning:* To make sure any changes are propogated to existing links, make any changes with <INPUT TYPE="submit" VALUE="this function." CLASS=twikiSubmit>
+</FORM>
+
+| *Database* | *Template URL* |
+| OMIM | http://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?id=VAL |
+| NCBI-GI | http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=protein&id=VAL|
+|NCBI-GeneID | http://www.ncbi.nlm.nih.gov/sites/entrez?db=gene&cmd=search&term=VAL|
+| HGNC | http://www.genenames.org/data/hgnc_data.php?hgnc_id=VAL|
+| HPRD | http://www.hprd.org/protein/VAL|
+| Ensembl   | http://www.ensembl.org/Homo_sapiens/geneview?gene=VAL|
+| UniProt   | http://beta.uniprot.org/uniprot/VAL|
+| PDB       | http://www.rcsb.org/pdb/explore/explore.do?structureId=VAL|
+| PROSITE   | http://www.expasy.ch/cgi-bin/prosite-search-ac?VAL|
+| Pfam      | http://pfam.janelia.org/family?acc=VAL|
+| KEGG PATH | http://www.genome.ad.jp/kegg/pathway/hsa/VAL.html|
+| KEGG Pathway | http://www.genome.ad.jp/dbget-bin/www_bget?VAL|
+| KEGG Orthology | http://www.genome.jp/dbget-bin/www_bget?ko+VAL |
+| KEGG Gene | http://www.genome.jp/dbget-bin/www_bget?VAL |
+| KEGG Compound | http://www.genome.jp/dbget-bin/www_bget?compound+VAL |
+| KEGG KO | http://www.kegg.com/dbget-bin/www_bget?ko+VAL |
+| GeneCards | http://www.genecards.org/cgi-bin/carddisp.pl?gene=VAL|
+| PubMed | http://www.ncbi.nlm.nih.gov/pubmed/VAL|
+| MGI | http://www.informatics.jax.org/searches/accession_report.cgi?id=MGI:VAL|
+| RGD Genes | http://rgd.mcw.edu/tools/genes/genes_view.cgi?id=VAL|
+| RGD Strains | http://rgd.mcw.edu/tools/strains/strains_view.cgi?id=VAL|
+| RATMAP   | http://www.ratmap.org/ShowSingleLocus.htm?accno=VAL|
+| FlyBase  | http://flybase.bio.indiana.edu/reports/VAL.html|
+| WormBase | http://www.wormbase.org/db/gene/gene?name=VAL;class=Gene|
+| iHOP | http://www.ihop-net.org/UniPub/iHOP/in?dbrefs_1=&syns_1=VAL&ncbi_tax_id_1=TAX |
+| PubChem | http://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid=VAL&loc=ec_rcs |
+| 3DMET | http://www.3dmet.dna.affrc.go.jp/bin2/show_data.e?acc=VAL |
+| GEO | http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=VAL |
+| ArrayExpress | http://www.ebi.ac.uk/microarray-as/aer/result?queryFor=Experiment&eAccession=VAL |
+| ZFIN | http://zfin.org/cgi-bin/webdriver?MIval=aa-markerview.apg&OID=VAL |
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%

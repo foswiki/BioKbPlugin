@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="JonathanManning" date="1251711944" format="1.1" reprev="1.2" version="1.2"}%
+
+%IF{"context can_login" then='%INCLUDE{"%SYSTEMWEB%.QuickMenuBarLogin" warn="off"}%'}%
+
+if ("%USERINFO{format="$wikiname"}%".match(/WikiGuest/)) {
+	new QuickMenu.Menu(menuBar, "%MAKETEXT{"Guest (view only)"}%", "%LOGINURL%", "%ICONURLPATH{"warning"}%", "%MAKETEXT{"log in to edit"}%");
+}
+else{
+	new QuickMenu.Menu(menuBar, "%SPACEOUT{%WIKINAME%}%", "%SCRIPTURLPATH{view}%/%MAINWEB%/%WIKINAME%", "%ICONURLPATH{"home"}%", "%MAKETEXT{"User page"}%");
+}
+if ("%USERINFO{format="$groups"}%".match(/AdminGroup/)) {
+	adminMenu = new QuickMenu.Menu(menuBar,"%MAKETEXT{"Admin"}%","","%ICONURLPATH{"wrench"}%","%MAKETEXT{"View or edit admin functions"}%");
+	%ADMIN{format="adminMenu.Add(\"$adminname\",\"%SCRIPTURLPATH{"view"}%/%WEB%/$admintopic\",\"%ICONURLPATH{"wrench"}%\");"}%
+	%INCLUDE{"%SYSTEMWEB%.QuickMenuBarUtilities" raw="on" warn="off"}%
+}
+if (! "%USERINFO{format="$wikiname"}%".match(/WikiGuest/)) {
+	new QuickMenu.Menu(menuBar, "%MAKETEXT{"Edit"}%", "%SCRIPTURLPATH{"edit"}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%", "%ICONURLPATH{"edittopic"}%", "%MAKETEXT{"Edit this topic text"}%");
+	createMenu = new QuickMenu.Menu(menuBar,"%MAKETEXT{"Create..."}%","","","%MAKETEXT{"Create a new topic based on available templates"}%");
+	%TOPICTYPES{format="createMenu.Add(\"$topictype\",\"%SCRIPTURLPATH{"view"}%/%WEB%/CreateForm?type=$topictype\",\"%ICONURLPATH{"edittopic"}%\");"}%
+}
+
+
+
+new QuickMenu.Menu(menuBar, "%MAKETEXT{"Advanced Search"}%", "SearchByType", "%ICONURLPATH{"searchtopic"}%", "%MAKETEXT{"Edit this topic text"}%");
+
+
