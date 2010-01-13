@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="JonathanManning" date="1257850641" format="1.1" reprev="1.4" version="1.4"}%
+%META:TOPICINFO{author="JonathanManning" date="1263380878" format="1.1" version="1.6"}%
 ---+!! !BioKbPlugin
 <!--
 One line description, required for extensions repository catalog.
@@ -10,7 +10,9 @@ One line description, required for extensions repository catalog.
 
 ---++ Introduction
 
-!BioKbPlugin is designed to provide a set of functions to establish a biological knowledgebase (hence !BioKb), starting from a seed of data derived from common online biological resources. Initially written for TWiki with PatternSkin in mind, this version was written within Foswiki, and employs the cleaner interface of QuickMenuSkin, with some significant mofidifications in the form of overrides in template files.  A series of administration topics are provided, which allow control of topic structure for all topics created through !BioKbPlugin functions, and specify, for example, the root URLs to which IDs can be added to create links to external databases.
+!BioKbPlugin is designed to provide a set of functions to establish a biological knowledgebase (hence !BioKb), starting from a seed of data derived from common online biological resources. Initially written for TWiki with PatternSkin in mind, this version was written within Foswiki, and employs the cleaner interface of QuickMenuSkin, with some significant mofidifications in the form of overrides in template files. The project for which this code was initially developed is [[http://www.raaswiki.org][RAASWiki]], which is now in early development (13/1/10), and I would encourage you to look there to see if you like the results.
+
+A series of administration topics are provided by BioKb, which allow control of topic structure for all topics created through !BioKbPlugin functions, and specify, for example, the root URLs to which IDs can be added to create links to external databases.
 
 Functions are provided for population of the wiki in several ways, in addition to those available natively in Foswiki:
 
@@ -130,3 +132,16 @@ Many thanks to the following sponsors for supporting this work:
 |  Support: | http://foswiki.org/bin/view/Support/BioKbPlugin |
 
 <!-- Do _not_ attempt to edit this topic; it is auto-generated. -->
+
+%META:FILEATTACHMENT{name="biokb.css" attachment="biokb.css" attr="" comment="CSS file for BioKb webs" date="1263317355" path="biokb.css" size="9132" stream="IO::File=GLOB(0xa1fcfac)" tmpFilename="/usr/tmp/CGItemp8143" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="_BioKb_accept2.png" attachment="_BioKb_accept2.png" attr="" comment="Tick image" date="1263317391" path="_BioKb_accept2.png" size="2854" stream="IO::File=GLOB(0xab23744)" tmpFilename="/usr/tmp/CGItemp8135" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="_BioKb_not2.png" attachment="_BioKb_not2.png" attr="" comment="cancel image" date="1263317409" path="_BioKb_not2.png" size="2773" stream="IO::File=GLOB(0x901a754)" tmpFilename="/usr/tmp/CGItemp8058" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="checkAllToggle.js" attachment="checkAllToggle.js" attr="" comment="Toggle 'check all' javascript" date="1263317436" path="checkAllToggle.js" size="313" stream="IO::File=GLOB(0x95739a4)" tmpFilename="/usr/tmp/CGItemp8036" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="dynamicFormField.js" attachment="dynamicFormField.js" attr="" comment="Javascript for adding/removing form fields" date="1263317461" path="dynamicFormField.js" size="434" stream="IO::File=GLOB(0x9582f84)" tmpFilename="/usr/tmp/CGItemp8041" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="igp_400_raaswiki.png" attachment="igp_400_raaswiki.png" attr="" comment="RAASWiki screenshot" date="1263317486" path="igp_400_raaswiki.png" size="117880" stream="IO::File=GLOB(0xa7d1884)" tmpFilename="/usr/tmp/CGItemp8225" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="igp_800_raaswiki.png" attachment="igp_800_raaswiki.png" attr="" comment="RAASWiki screenshot" date="1263317504" path="igp_800_raaswiki.png" size="341020" stream="IO::File=GLOB(0xa738d44)" tmpFilename="/usr/tmp/CGItemp8238" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="kegg_to_ncbi.txt" attachment="kegg_to_ncbi.txt" attr="" comment="Handy file for KEGG to NCBI ID conversion. Will need to be updated on occasion by fetching the latest from KeGG" date="1263317555" path="kegg_to_ncbi.txt" size="38620" stream="IO::File=GLOB(0xa3402dc)" tmpFilename="/usr/tmp/CGItemp8155" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="moocheck.js" attachment="moocheck.js" attr="" comment="Replace checkboxes with images" date="1263317577" path="moocheck.js" size="5327" stream="IO::File=GLOB(0xa8810f4)" tmpFilename="/usr/tmp/CGItemp8067" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="mootools.js" attachment="mootools.js" attr="" comment="The mootools javascript framework" date="1263317599" path="mootools.js" size="22657" stream="IO::File=GLOB(0xaf3198c)" tmpFilename="/usr/tmp/CGItemp8122" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="morbidmap" attachment="morbidmap" attr="" comment="File from OMIM for working out some rough disease-gene associations" date="1263317639" path="morbidmap" size="360151" stream="IO::File=GLOB(0x9a5d34c)" tmpFilename="/usr/tmp/CGItemp8273" user="JonathanManning" version="1"}%
+%META:FILEATTACHMENT{name="raaswiki.png" attachment="raaswiki.png" attr="" comment="RAASWiki screenshot" date="1263317676" path="raaswiki.png" size="226001" stream="IO::File=GLOB(0x9a0c104)" tmpFilename="/usr/tmp/CGItemp8187" user="JonathanManning" version="1"}%
