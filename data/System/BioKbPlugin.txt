@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="JonathanManning" date="1263380878" format="1.1" version="1.6"}%
+%META:TOPICINFO{author="JonathanManning" date="1263383079" format="1.1" reprev="1.6" version="1.6"}%
 ---+!! !BioKbPlugin
 <!--
 One line description, required for extensions repository catalog.
@@ -107,7 +107,7 @@ I know this is messy, but I didn't have time when writing this to enter into dis
 
    * Make sure the dependencies listed below are present. I've had problems getting SOAP::Lite to work with versions greater than 0.60 due to a [[http://twiki.org/cgi-bin/view/Support/SoapClientPluginInsecureDependency][seeming lack of taint safety]]. Maybe that's resolved with more recent versions than I was trying though.
 
-   * Download BioKbPlugin_installer, BioKbPlugin.md5 and BioKbPlugin.tgz or BioKbPlugin.zip from [[http://www.bioinf.mvm.ed.ac.uk/twiki/bin/view/TWiki/BioKbPlugin][here]] into your TWiki root directory (e.g. /var/www/twiki). Run the installer script and decline when prompted to check the TWiki repository for an updated package. NOTE: We have chosen not to host this plugin at the TWiki.org, due to the recent [[http://tech.slashdot.org/article.pl?sid=08/10/29/146201][split]] of the TWiki community, culminating with the formation of [[http://foswiki.org/][Foswiki]]. Once Foswiki has its first release, and we have made any necessary changes to BioKb, we will upload the plugin to this repository.
+   * You should be able to install BioKbPlugin via Foswiki's configuration script, provided all the dependencies are satisfied. As usual, executing the installer manually from your Foswiki root may help, and CPAN is your friend for perl dependencies.
 
    * !BioKb utilises a number of publicly available accessory files to derive annotations, which we cannot distribute, but which need to be stored locally to prevent constant calls to remote servers. The following should be downloaded and placed in the BioKb working directory (usually at <Foswiki root>/working/work_areas/BioKbPlugin/), and will be used to assemble topic content:
       * KEGG: [[ftp://ftp.genome.jp/pub/kegg/pathway/map_title.tab][List of KEGG pathway names and IDs]]
