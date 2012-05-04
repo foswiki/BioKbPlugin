@@ -116,9 +116,11 @@ sub read_topic_structure_admin {
                         push @vals, $val if ( $val =~ /\w/ );
                     }
 
-                    if ( scalar @vals > 1
+                    if (
+                        scalar @vals > 1
                         || ( scalar @vals == 1
-                            && $properties[$i] eq "databases" ) )
+                            && $properties[$i] eq "databases" )
+                      )
                     {
                         $admin_data{$topic_type}{ $sections[-1] }{$field}
                           { $properties[$i] } = \@vals;
@@ -469,9 +471,11 @@ sub make_input_form {
             topic  => $topic,
             params => ["Please suppy a desired form type with \"type\"\n"]
           )
-          if ( ( !defined $type || $type eq "" )
+          if (
+            ( !defined $type || $type eq "" )
             && ( !defined $query->param("Title")
-                || $query->param("Title") eq "" ) );
+                || $query->param("Title") eq "" )
+          );
 
     }
     return $output;
@@ -745,10 +749,12 @@ sub _make_input_form {
 "<script type=\"text/javascript\" src=\"%PUBURL%/%TWIKIWEB%/BioKbPlugin/dynamicFormField.js\"></script>\n"
     );
 
-    my $form .=
-      "---++ Create a topic of type !$type\n\n"
-      . CGI::start_form( -name => $type, -method => 'post',
-        -class => "results" );
+    my $form .= "---++ Create a topic of type !$type\n\n"
+      . CGI::start_form(
+        -name   => $type,
+        -method => 'post',
+        -class  => "results"
+      );
     $form .= CGI::hidden( -name => "type", -default => $type, -override => 1 );
     $form .= CGI::hidden(
         -name     => "edited",
