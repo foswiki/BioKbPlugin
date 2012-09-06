@@ -1,6 +1,5 @@
 # Release manifest for BioKbPlugin
 data/System/BioKbPlugin.txt 0644 Documentation
-lib/Foswiki/Plugins/BioKbPlugin.pm 0644 Perl module
 data/_BioKbPlugin/About.txt 0644 Topic to introduce wiki
 data/_BioKbPlugin/Admin.txt 0644 Parent for admin topics
 data/_BioKbPlugin/AdminContentLimits.txt 0644 Define limits on auto-derived content
